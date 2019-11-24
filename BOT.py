@@ -14,3 +14,4 @@ async def ping():
     await Bot.say("Pong")
 
 token = os.environ.get('BOT_TOKEN')
+bot.run(str(token))
