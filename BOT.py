@@ -7,11 +7,11 @@ Bot.remove_command('help')
 
 @Bot.event
 async def on_ready():
-    Bot.say("Bot is online")
+    print("Bot is online")
 
 @Bot.command(pass_context = True)
-async def ping():
-    await Bot.say("Pong")
+async def hello(ctx):
+    await Bot.say("Hello {}".format(ctx.message.author.mention))
 
 token = os.environ.get('BOT_TOKEN')
 
