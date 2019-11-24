@@ -13,7 +13,7 @@ async def hello(ctx):
     
 @Bot.command()
 async def clean(ctx):
-    await ctx.channel.message.delete()
+    await ctx.message.delete()
 
 token = os.environ.get('BOT_TOKEN')
 
