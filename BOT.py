@@ -1,17 +1,13 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands import Bot
 import os
 
-Bot = commands.Bot(command_prefix= '-')
-Bot.remove_command('help')
+Bot = commands.Bot(command_prefix = '-')
 
-@Bot.event
-async def on_ready():
-    print("Bot is online")
-
-@Bot.command(pass_context= True)
+@Bot.command()
 async def hello(ctx):
-    await Bot.send("Hello {}".format(ctx.message.author.mention))
+    await ctx.send("Hello {}".format(ctx.message.author.mention))
 
 token = os.environ.get('BOT_TOKEN')
 
