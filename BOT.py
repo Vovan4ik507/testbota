@@ -11,7 +11,7 @@ async def on_ready():
 
 @Bot.command(pass_context= True)
 async def hello(ctx):
-    await channel.send("Hello {}".format(ctx.message.author.mention))
+    await Bot.send("Hello {}".format(ctx.message.author.mention))
 
 token = os.environ.get('BOT_TOKEN')
 
