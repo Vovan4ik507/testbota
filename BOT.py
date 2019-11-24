@@ -15,7 +15,7 @@ async def hello(ctx):
 @Bot.command()
 async def config(ctx, func):
     if func == deliteble:
-        clearly = True
+        global clearly = True
         
 
 token = os.environ.get('BOT_TOKEN')
