@@ -11,7 +11,7 @@ async def hello(ctx):
     await ctx.send("Hello {}".format(ctx.message.author.mention))
     await ctx.message.delete()
     
-@Bor.command()
+@Bot.command()
 async def clean():
     await channel.message.delete()
 
