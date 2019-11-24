@@ -12,8 +12,8 @@ async def hello(ctx):
     await ctx.message.delete()
     
 @Bor.command()
-async def clean(ctx, quant):
-    await channel.message.delete(int(quant))
+async def clean():
+    await channel.message.delete()
 
 token = os.environ.get('BOT_TOKEN')
 
