@@ -7,7 +7,7 @@ Bot.remove_command('help')
 
 @Bot.event
 async def on_ready():
-    print("Bot is online")
+    Bot.say("Bot is online")
 
 @Bot.command(pass_context = True)
 async def ping():
