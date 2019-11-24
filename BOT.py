@@ -9,7 +9,7 @@ Bot.remove_command('hello')
 @Bot.command()
 async def hello(ctx):
     await ctx.send("Hello {}".format(ctx.message.author.mention))
-    await ctx.delete_message(ctx.message)
+    await ctx.message.delete(ctx.message)
 
 token = os.environ.get('BOT_TOKEN')
 
