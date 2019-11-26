@@ -4,7 +4,6 @@ from discord.ext.commands import Bot
 import os
 
 Bot = commands.Bot(command_prefix = '-')
-clearly = False
 
 @Bot.command()
 async def hello(ctx):
