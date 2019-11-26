@@ -16,7 +16,7 @@ async def clean(ctx):
     
 @Bot.command()
 async def info(ctx, user: discord.User):
-	emb = discord.Embed(title = "Info about {}".format(user.mention), color=0x39d0d6)
+	emb = discord.Embed(title = "Info about {}".format(user.mention), color = 0x39d0d6)
 	emd.add_field(name = "Name", value = user.mention)
 	emb.add_field(name = "Joined at", value = str(user.joined at)[:23])
 	emb.add_field(name = "ID", value = user.id)
