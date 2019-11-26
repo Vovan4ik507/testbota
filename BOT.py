@@ -9,7 +9,7 @@ clearly = False
 @Bot.command()
 async def hello(ctx):
     await ctx.send("Hello {}".format(ctx.message.author.mention))
-    await ctx.message.delete()
+    await ctx.channel.message.delete()
     
 @Bot.command()
 async def info(ctx, user: discord.User):
