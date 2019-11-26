@@ -14,6 +14,11 @@ async def hello(ctx):
 @Bot.command()
 async def clean(ctx):
     await ctx.message.delete()
+    
+@Bot.command()
+async def mute(ctx, member: discord.Member):
+    mute_role = discord.utils.get(ctx.message.guild.roles, name="Mute")
+    await member.add_roles(mute_role)
 
 token = os.environ.get('BOT_TOKEN')
 
