@@ -23,7 +23,7 @@ async def info(ctx, user: discord.User):
 	emb.set_author(name = Bot.user.name, url = "https://discordapp.com/oauth2/authorize?client_id=513405344718782464&scope=bot&permissions=8")
 	emb.set_footer(text = "Вызвано: {}".format(user.mention), icon_url = user.avater_url)
 	await ctx.send(embed = emb)
-	await ctx.delete.message()    
+	await ctx.message.delete()    
     
 @Bot.command()
 async def clean(ctx):
