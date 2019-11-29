@@ -13,6 +13,8 @@ async def hello(ctx):
 async def mute(ctx, member: discord.Member):
     mute_role = discord.utils.get(ctx.message.guild.roles, name="Mute")
     await member.add_roles(mute_role)
+    await ctx.message.delete()
+    await ctx.send('Muted sucsesful')
 
 token = os.environ.get('BOT_TOKEN')
 
