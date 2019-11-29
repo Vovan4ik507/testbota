@@ -26,7 +26,7 @@ async def info(ctx, member: discord.Member):
 	if user.game != None:
 		emb.add_field(name = "Game", value = member.game)
 	emb.set_thumbnail(url = member.avatar_url)
-	emb.set_author(name = , url = "https://discordapp.com/oauth2/authorize?client_id=513405344718782464&scope=bot&permissions=8")
+	emb.set_author(name = "Vovan408#0901", url = "https://discordapp.com/oauth2/authorize?client_id=513405344718782464&scope=bot&permissions=8")
 	emb.set_footer(text = "Caused by: {}".format(member.mention), icon_url = member.avatar_url)
 	await ctx.send(embed = emb)
 
