@@ -16,7 +16,7 @@ async def info(ctx, member: discord.Member):
 	emd.add_field(name = "Name", value = member.mention)
 	emb.add_field(name = "Joined at", value = str(member.joined at)[:23])
 	emb.add_field(name = "ID", value = member.id)
-	if user.game != None:
+	if member.game != None:
 		emb.add_field(name = "Game", value = member.game)
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_author(name = "Vovan408#0901", url = "https://discordapp.com/oauth2/authorize?client_id=513405344718782464&scope=bot&permissions=8")
