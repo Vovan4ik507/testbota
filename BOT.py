@@ -11,7 +11,7 @@ async def hello(ctx):
     	await ctx.message.delete()    
 
 @Bot.command()
-async def info(ctx, member: discord.Member):
+async def info(ctx, *, member: discord.Member):
 	emb = discord.Embed(title = "Info about {}".format(member.name), colour= 0x39d0d6)
 	emd.add_field(name = "Name", value = member.name)
 	emb.add_field(name = "Joined at", value = str(member.joined_at)[:23])
@@ -23,6 +23,10 @@ async def info(ctx, member: discord.Member):
 	emb.set_footer(text = "Caused by: {}".format(member.mention), icon_url = member.avatar_url)
 	await ctx.send("1", embed = emb)
 	await ctx.message.delete()
+
+@bot.command()
+async def joined(ctx, *, member: discord.Member):
+    await ctx.send('{0} joined on {0.joined_at}'.format(member))
         
 token = os.environ.get('BOT_TOKEN')
 
