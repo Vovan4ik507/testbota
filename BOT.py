@@ -14,7 +14,7 @@ async def hello(ctx):
 async def info(ctx, member: discord.Member):
 	emb = discord.Embed(title = "Info about {}".format(member.mention), colour= 0x39d0d6)
 	emd.add_field(name = "Name", value = member.mention)
-	emb.add_field(name = "Joined at", value = str(member.joined at)[:23])
+	emb.add_field(name = "Joined at", value = str(member.joined_at)[:23])
 	emb.add_field(name = "ID", value = member.id)
 	if member.game != None:
 		emb.add_field(name = "Game", value = member.game)
