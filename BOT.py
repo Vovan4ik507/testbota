@@ -24,7 +24,7 @@ async def info(ctx, *, member: discord.Member):
 	await ctx.send("1", embed = emb)
 	await ctx.message.delete()
 
-@bot.command()
+@Bot.command()
 async def joined(ctx, *, member: discord.Member):
     await ctx.send('{0} joined on {0.joined_at}'.format(member))
         
