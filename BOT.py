@@ -23,10 +23,6 @@ async def info(ctx, *, member: discord.Member):
 	emb.set_footer(text = "Caused by: {}".format(member.mention), icon_url = member.avatar_url)
 	await ctx.send("1", embed = emb)
 	await ctx.message.delete()
-
-@Bot.command()
-async def joined(ctx, *, member: discord.Member):
-    await ctx.send('{0} joined on {0.joined_at}'.format(member))
         
 token = os.environ.get('BOT_TOKEN')
 
