@@ -14,7 +14,7 @@ async def say(ctx, arg):
 	await ctx.send(arg)
 
 @Bot.command()
-async def info(ctx, *, member: discord.Member):
+async def info(ctx, member: commands.Greedy[discord.Member]):
 	emb = discord.Embed(title = "Info about {}".format(member.mention), colour= 0x39d0d6)
 	emd.add_field(name = "Name", value = member.name)
 	emb.add_field(name = "Joined at", value = str(member.joined_at)[:23])
