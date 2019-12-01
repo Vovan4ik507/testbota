@@ -19,12 +19,10 @@ async def info(ctx, member: discord.Member):
 	emd.add_field(name = "Name", value = "{}".format(member.name))
 	emb.add_field(name = "Joined at", value = "{}".format(str(member.joined_at)[:23]))
 	emb.add_field(name = "ID", value = "{}".format(member.id))
-	if member.game != None:
-		emb.add_field(name = "Game", value = "{}".format(member.game))
 	emb.set_thumbnail(url = "{}".format(member.avatar_url))
 	emb.set_author(name = "Vovan408#0901", url = "https://discordapp.com/oauth2/authorize?client_id=513405344718782464&scope=bot&permissions=8")
 	emb.set_footer(text = "Caused by: {}".format(member.mention), icon_url = member.avatar_url)
-	await ctx.send("{}".format(embed = emb))
+	await ctx.send("1 {}".format(embed = emb))
         
 token = os.environ.get('BOT_TOKEN')
 
