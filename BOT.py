@@ -6,26 +6,24 @@ import time
 
 prefix = '-'
 
-bot = commands.Bot(command_prefix = prefix)
+Bot = commands.Bot(command_prefix = prefix)
 
-Bot.remove_command('help')
-
-@bot.command()
+@Bot.command()
 async def hello(ctx):
     	await ctx.send("Hello {}".format(ctx.message.author.mention))
 
-@bot.command()
+@Bot.command()
 async def say(ctx, *, arg):
 	await ctx.send(arg)
 	
-@bot.command()
+@Bot.command()
 async def help(ctx):
 	embed = discord.Embed(title = "My commands", color = 0x39d0d6)
 	embed.add_field(name = f"{prefix}ping", value = "Show ping")
 	embed.add_field(name = f"{prefix}user", value = "Information about anyone in your server")
-	await ctx.sendembed = embed)
+	await ctx.send(embed = embed)
 
-@bot.command()
+@Bot.command()
 async def ping(ctx):
     channel = ctx.channel
     t1 = time.perf_counter()
