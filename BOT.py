@@ -4,19 +4,29 @@ from discord.ext.commands import Bot
 import os
 import time
 
-Bot = commands.Bot(command_prefix = '-')
+prefix = '-'
 
-@Bot.command()
+bot = commands.Bot(command_prefix = prefix)
+
+Bot.remove_command('help')
+
+@bot.command()
 async def hello(ctx):
     	await ctx.send("Hello {}".format(ctx.message.author.mention))
 
-@Bot.command()
+@bot.command()
 async def say(ctx, *, arg):
 	await ctx.send(arg)
 	
-@Bot.command()
+@bot.command()
+async def help(ctx):
+	embed = discord.Embed(title = "My commands", color = 0x39d0d6)
+	embed.add_field(name = "{prefix}ping", value = "Show ping")
+	embed.add_field(name = "{prefix}user", value = "Information about anyone in your server")
+	await Bot.send_message(ctx.message.author, embed = embed)
+
+@bot.command()
 async def ping(ctx):
-    'Pings Bot'
     channel = ctx.channel
     t1 = time.perf_counter()
     await channel.trigger_typing()
