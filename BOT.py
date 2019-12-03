@@ -16,7 +16,7 @@ async def say(ctx, *, arg):
 @Bot.command()
 async def info(ctx, member: discord.Member):
 	emb = discord.Embed(title = "Info about {}".format(member.name), color = 0x39d0d6)
-	emb.add_field(name = "Name", value = member.name, inline = True)
+	emb.add_field(name = "Name", value = member.name, inline = False)
 	emb.add_field(name = "Joined at", value = str(member.joined_at)[:19])
 	emb.add_field(name = "ID", value = member.id)
 	emb.set_thumbnail(url = member.avatar_url)
