@@ -17,7 +17,8 @@ async def say(ctx, *, arg):
 async def info(ctx, member: discord.Member):
 	emb = discord.Embed(title = "Info about {}".format(member.name), color = 0x39d0d6)
 	emb.add_field(name = "Name", value = member.name, inline = False)
-	emb.add_field(name = "Joined at", value = str(member.joined_at)[:19], inline = False)
+	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
+	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_author(name = "Bot paradise", url = "https://discordapp.com/oauth2/authorize?client_id=513405344718782464&scope=bot&permissions=8")
