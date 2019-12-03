@@ -21,9 +21,9 @@ async def say(ctx, *, arg):
 @bot.command()
 async def help(ctx):
 	embed = discord.Embed(title = "My commands", color = 0x39d0d6)
-	embed.add_field(name = "{prefix}ping", value = "Show ping")
-	embed.add_field(name = "{prefix}user", value = "Information about anyone in your server")
-	await Bot.send_message(ctx.message.author, embed = embed)
+	embed.add_field(name = f"{prefix}ping", value = "Show ping")
+	embed.add_field(name = f"{prefix}user", value = "Information about anyone in your server")
+	await ctx.sendembed = embed)
 
 @bot.command()
 async def ping(ctx):
