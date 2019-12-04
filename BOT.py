@@ -30,7 +30,7 @@ async def ping(ctx):
 	
 @Bot.command()
 async def user(ctx, user: discord.User):
-	if member == None:
+	if user == None:
 		author = ctx.author
 	else:
 		author = user
