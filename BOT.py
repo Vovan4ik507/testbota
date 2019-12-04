@@ -32,19 +32,15 @@ async def ping(ctx):
 async def user(ctx, member: discord.Member):
 	
 	if member == None:
-		emb = discord.Embed(title = f"Info about {ctx.author.mention}", color = 0x39d0d6)
-		emb.add_field(name = "ID", value = ctx.author.id, inline = False)
-		emb.add_field(name = "Joined server at", value = str(ctx.author.joined_at)[:19], inline = False)
-		emb.add_field(name = "Created account at", value = str(ctx.author.created_at)[:19], inline = False)
-		emb.set_thumbnail(url = ctx.author.avatar_url)
-		emb.set_author(name = f"Caused by: {ctx.author.name + '#' + str(ctx.author.discriminator)}")
+		author = ctx.author
 	else:
-		emb = discord.Embed(title = f"Info about {member.mention}", color = 0x39d0d6)
-		emb.add_field(name = "ID", value = member.id, inline = False)
-		emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
-		emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
-		emb.set_thumbnail(url = member.avatar_url)
-		emb.set_author(name = f"Caused by: {member.name + '#' + str(member.discriminator)}")
+		author = member
+	emb = discord.Embed(title = f"Info about {author.mention}", color = 0x39d0d6)
+	emb.add_field(name = "ID", value = author.id, inline = False)
+	emb.add_field(name = "Joined server at", value = str(author.joined_at)[:19], inline = False)
+	emb.add_field(name = "Created account at", value = str(author.created_at)[:19], inline = False)
+	emb.set_thumbnail(url = author.avatar_url)
+	emb.set_author(name = f"Caused by: {author.name + '#' + str(author.discriminator)}")
 	await ctx.send(embed = emb)
         
 token = os.environ.get('BOT_TOKEN')
