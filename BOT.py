@@ -29,11 +29,11 @@ async def ping(ctx):
     await ctx.send(embed = em)
 	
 @Bot.command()
-async def user(ctx, member: discord.Member):
+async def user(ctx, user: discord.User):
 	if member == None:
 		author = ctx.author
 	else:
-		author = member
+		author = user
 	emb = discord.Embed(title = f"Info about {author.mention}", color = 0x39d0d6)
 	emb.add_field(name = "ID", value = author.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(author.joined_at)[:19], inline = False)
