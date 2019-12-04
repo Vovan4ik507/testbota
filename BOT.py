@@ -34,6 +34,7 @@ async def user(ctx, member: discord.Member):
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
 	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
+	emb.set_image(url = "https://hi-news.ru/wp-content/uploads/2017/05/space-03.jpg")
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_author(name = f"Caused by: {member.name + '#' + str(member.discriminator)}")
 	await ctx.send(embed = emb)
