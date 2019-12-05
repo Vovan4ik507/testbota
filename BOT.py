@@ -35,10 +35,10 @@ async def user(ctx, member: discord.Member):
 	emb.add_field(name = "ID", value = author.id, inline = False)
 	emb.add_field(name = "Joined server at", value = author.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"), inline = False)
 	emb.add_field(name = "Created account at", value = author.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"), inline = False)
-	emb.add_field(name=f"Their roles: ", value=" ".join([role.mention for role in roles]), inline=False)
-  	emb.add_field(name="Highest role: ", value=member.top_role.mention, inline=False)
+	emb.add_field(name= "Their roles: ", value=" ".join([role.mention for role in roles]), inline=False)
+  	emb.add_field(name= "Highest role: ", value=member.top_role.mention, inline=False)
 	emb.set_thumbnail(url = author.avatar_url)
-	emb.set_author(name = f"Caused by: {str(ctx.author)}", url = author.avatar_url)
+	emb.set_author(name = f"Caused by: {str(ctx.author)}")
 	await ctx.send(embed = emb)
         
 token = os.environ.get('BOT_TOKEN')
