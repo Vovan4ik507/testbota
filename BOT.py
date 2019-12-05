@@ -9,12 +9,12 @@ Bot = commands.Bot(command_prefix = '-')
 @Bot.command()
 async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
-	await ctx.delete()
+	await ctx.message.delete()
 
 @Bot.command()
 async def say(ctx, *, arg):
 	await ctx.send(arg)
-	await ctx.delete()
+	await ctx.message.delete()
 
 @Bot.command()
 async def ping(ctx):
@@ -29,11 +29,11 @@ async def ping(ctx):
     	em = discord.Embed(title = ":ping_pong: Pong",description = desc, color = green)
     	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
     	await ctx.send(embed = em)
-	await ctx.delete()
+	await ctx.message.delete()
 	
 @Bot.command()
-async def user(ctx, user: discord.User):
-	author = user
+async def user(ctx, member: discord.Member):
+	author = member
 	emb = discord.Embed(title = f"Info about {author.mention}", color = 0x39d0d6)
 	emb.add_field(name = "ID", value = author.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(author.joined_at)[:19], inline = False)
@@ -41,6 +41,13 @@ async def user(ctx, user: discord.User):
 	emb.set_thumbnail(url = author.avatar_url)
 	emb.set_author(name = f"Caused by: str({author}")
 	await ctx.send(embed = emb)
+	await ctx.message.delete()
+	
+@Bot.command()
+async def held(ctx, member: discord.Member):
+	embed = discord.Embed(title = member.mention, color = 0x39d0d6)
+	await ctx.send(embed = embed)
+	await ctx.message.delete()
         
 token = os.environ.get('BOT_TOKEN')
 
