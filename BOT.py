@@ -6,8 +6,6 @@ import time
 
 Bot = commands.Bot(command_prefix = '-')
 
-everyone = discord.Role(id = 646004417052540949, name = '@everyone')
-
 @Bot.command()
 async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
@@ -44,7 +42,7 @@ async def user(ctx, member: discord.Member):
 	emb.add_field(name = "ID", value = author.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(author.joined_at)[:19], inline = False)
 	emb.add_field(name = "Created account at", value = str(author.created_at)[:19], inline = False)
-	if author.top_role != everyone:
+	if author.top_role != 'everyone':
 		emb.add_field(name = "Highest role", value = author.top_role.mention, inline=False)
 	else:
 		emb.add_field(name = "Highest role", value = author.top_role, inline=False)
