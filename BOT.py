@@ -33,9 +33,8 @@ async def user(ctx, member: discord.Member):
 	author = member
 	emb = discord.Embed(title = f"Info about {author}", color = 0x39d0d6)
 	emb.add_field(name = "ID", value = author.id, inline = False)
-	emb.add_field(name = "Joined server at", value = author.joined_at[:19], inline = False)
-	emb.add_field(name = "Created account at", value = author.created_at[:19], inline = False)
-	emb.add_field(name= "Their roles: ", value=" ".join([role.mention for role in roles]), inline=False)
+	emb.add_field(name = "Joined server at", value = str(author.joined_at)[:19], inline = False)
+	emb.add_field(name = "Created account at", value = str(author.created_at)[:19], inline = False)
   	emb.add_field(name= "Highest role: ", value = author.top_role.mention, inline=False)
 	emb.set_thumbnail(url = author.avatar_url)
 	emb.set_author(name = f"Caused by: {str(ctx.author)}")
