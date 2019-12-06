@@ -42,6 +42,7 @@ async def user(ctx, member: discord.Member):
 	emb.set_thumbnail(url = author.avatar_url)
 	emb.set_author(name = f"Caused by: {ctx.author}", icon_url = author.avatar_url)
 	await ctx.send(embed = emb)
+	await ctx.send(author.top_role, author.roles)
         
 token = os.environ.get('BOT_TOKEN')
 
