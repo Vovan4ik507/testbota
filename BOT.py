@@ -4,17 +4,17 @@ from discord.ext.commands import Bot
 import os
 import time
 
-Bot = commands.Bot(command_prefix = '-')
+bot = commands.Bot(command_prefix = '-')
 
-@Bot.command()
+@bot.command()
 async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
 
-@Bot.command()
+@bot.command()
 async def say(ctx, *, arg):
 	await ctx.send(arg)
 
-@Bot.command()
+@bot.command()
 async def ping(ctx):
     	channel = ctx.channel
     	t1 = time.perf_counter()
@@ -28,7 +28,7 @@ async def ping(ctx):
     	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
     	await ctx.send(embed = em)
 	
-@Bot.command()
+@bot.command()
 async def user(ctx, member: discord.Member):
 	author = member
 	emb = discord.Embed(title = f"<@{author.id}>", color = 0x39d0d6)
