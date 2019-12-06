@@ -6,7 +6,7 @@ import time
 
 Bot = commands.Bot(command_prefix = '-')
 
-everyone = discord.Role(id=646004417052540949 name='@everyone')
+everyone = discord.Role(id = 646004417052540949, name = '@everyone')
 
 @Bot.command()
 async def hello(ctx):
