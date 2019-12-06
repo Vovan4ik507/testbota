@@ -37,7 +37,7 @@ async def user(ctx, member: discord.Member):
 	emb.add_field(name = "Created account at", value = str(author.created_at)[:19], inline = False)
 	emb.add_field(name= "Highest role", value = author.top_role.mention, inline=False)
 	emb.set_thumbnail(url = author.avatar_url)
-	emb.set_author(name = f"Caused by: {author}")
+	emb.set_author(name = f"Caused by: {author}", icon_url = author.avatar_url)
 	await ctx.send(embed = emb)
         
 token = os.environ.get('BOT_TOKEN')
