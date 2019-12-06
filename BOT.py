@@ -4,17 +4,17 @@ from discord.ext.commands import Bot
 import os
 import time
 
-bot = commands.Bot(command_prefix = '-')
+Bot = commands.Bot(command_prefix = '-')
 
-@bot.command()
+@Bot.command()
 async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
 
-@bot.command()
+@Bot.command()
 async def say(ctx, *, arg):
 	await ctx.send(arg)
 
-@bot.command()
+@Bot.command()
 async def ping(ctx):
     	channel = ctx.channel
     	t1 = time.perf_counter()
@@ -28,7 +28,7 @@ async def ping(ctx):
     	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
     	await ctx.send(embed = em)
 	
-@bot.command()
+@Bot.command()
 async def user(ctx, member: discord.Member):
 	author = member
 	emb = discord.Embed(title = f"<@{author.id}>", color = 0x39d0d6)
@@ -38,7 +38,6 @@ async def user(ctx, member: discord.Member):
 	emb.add_field(name = "Highest role", value = author.top_role.mention, inline=False)
 	emb.set_thumbnail(url = author.avatar_url)
 	emb.set_author(name = f"Caused by: {author}", icon_url = author.avatar_url)
-	emb.set_footer(text = f'My owner is <@{Bot.owner_id}>')
 	await ctx.send(embed = emb)
         
 token = os.environ.get('BOT_TOKEN')
