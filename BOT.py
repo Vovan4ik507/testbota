@@ -13,6 +13,13 @@ async def hello(ctx):
 @Bot.command()
 async def say(ctx, *, arg):
 	await ctx.send(arg)
+	
+@Bot.command()
+async def roles(ctx, member: discord.Member):
+	e = discord.Embed(title = 'Roles', color = 0x39d0d6)
+	e.add_field(name = 'Role', value = member.top_role)
+	e.add_field(name = 'Roles', value = member.roles)
+	await ctx.send(embed = e)
 
 @Bot.command()
 async def ping(ctx):
@@ -41,7 +48,7 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = author.top_role, inline=False)
 	emb.set_thumbnail(url = author.avatar_url)
 	emb.set_author(name = f"Caused by: {ctx.author}", icon_url = author.avatar_url)
-	await ctx.send(embed = emb, content = author.top_role author.roles)
+	await ctx.send(embed = emb)
         
 token = os.environ.get('BOT_TOKEN')
 
