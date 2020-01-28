@@ -17,7 +17,10 @@ async def say(ctx, *, arg):
 @Bot.command()
 async def roles(ctx, member: discord.Member):
 	e = discord.Embed(title = 'Roles', color = 0x39d0d6)
-	e.add_field(name = 'Role', value = member.top_role.mention)
+	if member.top_role.name == <@646004417052540949>:
+		e.add_field(name = 'Role', value = member.top_role)
+	else:
+		e.add_field(name = 'Role', value = member.top_role.mention)
 	e.add_field(name = 'Roles', value = member.roles)
 	await ctx.send(embed = e)
 
