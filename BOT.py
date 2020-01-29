@@ -41,13 +41,12 @@ async def ping(ctx):
 @Bot.command()
 async def user(ctx, member: discord.Member):
 	emb = discord.Embed(name = str(member), color = 0x39d0d6)
-	emb.add_field(name = f"***{member.mention}***", value = '', inline = False)
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
 	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
 	emb.add_field(name = "Highest role", value = member.top_role.mention, inline=False)
 	emb.set_thumbnail(url = member.avatar_url)
-	emb.set_footer(text = f"Caused by: {str(ctx.author)}")
+	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author)
 	await ctx.send(embed = emb)
         
 token = os.environ.get('BOT_TOKEN')
