@@ -48,6 +48,28 @@ async def user(ctx, member: discord.Member):
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author)
 	await ctx.send(embed = emb)
+	
+@Bot.command()
+async def game(ctx, пользователь):
+	компьютер = random.choice(['камень', 'бумага', 'ножницы'])
+    if пользователь == 'камень' and компьютер == 'камень':
+        await ctx.send('Ничья. Камень против камня.')
+    elif пользователь == 'камень' and компьютер == 'бумага':
+        await ctx.send('Ви проиграли. Камень против бумаги.')
+    elif пользователь == 'камень' and компьютер == 'ножницы':
+        await ctx.send('Ви выиграли. Камень против ножниц.')
+    elif пользователь == 'бумага' and компьютер == 'камень':
+        await ctx.send('Ви выиграли. Бумага против камня.')
+    elif пользователь == 'бумага' and компьютер == 'бумага':
+        await ctx.send('Ничья. Бумага против бумаги.')
+    elif пользователь == 'бумага' and компьютер == 'ножницы':
+        await ctx.send('Ви проиграли. Бумага против ножниц.')
+    elif пользователь == 'ножницы' and компьютер == 'ножницы':
+        await ctx.send('Ничья. Ножницы против ножниц.')
+    elif пользователь == 'ножницы' and компьютер == 'бумага':
+        await ctx.send('Ви выиграли. Ножницы против бумаги.')
+    elif пользователь == 'ножницы' and компьютер == 'камень':
+        await ctx.send('Ви проиграли. Ножницы против камня.')
         
 token = os.environ.get('BOT_TOKEN')
 
