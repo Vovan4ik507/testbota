@@ -49,28 +49,6 @@ async def user(ctx, member: discord.Member):
 	emb.set_author(name = member.mention)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}")
 	await ctx.send(embed = emb)
-	
-@Bot.command()
-async def game(ctx, user):
-	comp = random.choice(['камень', 'бумага', 'ножницы'])
-    if user == 'камень' and comp == 'камень':
-        await ctx.send('Ничья. Камень против камня.')
-    elif user == 'камень' and comp == 'бумага':
-        await ctx.send('Ви проиграли. Камень против бумаги.')
-    elif user == 'камень' and comp == 'ножницы':
-        await ctx.send('Ви выиграли. Камень против ножниц.')
-    elif user == 'бумага' and comp == 'камень':
-        await ctx.send('Ви выиграли. Бумага против камня.')
-    elif user == 'бумага' and comp == 'бумага':
-        await ctx.send('Ничья. Бумага против бумаги.')
-    elif user == 'бумага' and comp == 'ножницы':
-        await ctx.send('Ви проиграли. Бумага против ножниц.')
-    elif user == 'ножницы' and comp == 'ножницы':
-        await ctx.send('Ничья. Ножницы против ножниц.')
-    elif user == 'ножницы' and comp == 'бумага':
-        await ctx.send('Ви выиграли. Ножницы против бумаги.')
-    elif user == 'ножницы' and comp == 'камень':
-        await ctx.send('Ви проиграли. Ножницы против камня.')
         
 token = os.environ.get('BOT_TOKEN')
 
