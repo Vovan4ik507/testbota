@@ -50,25 +50,25 @@ async def user(ctx, member: discord.Member):
 	await ctx.send(embed = emb)
 	
 @Bot.command()
-async def game(ctx, пользователь):
-	компьютер = random.choice(['камень', 'бумага', 'ножницы'])
-    if пользователь == 'камень' and компьютер == 'камень':
+async def game(ctx, user):
+	comp = random.choice(['камень', 'бумага', 'ножницы'])
+    if user == 'камень' and comp == 'камень':
         await ctx.send('Ничья. Камень против камня.')
-    elif пользователь == 'камень' and компьютер == 'бумага':
+    elif user == 'камень' and comp == 'бумага':
         await ctx.send('Ви проиграли. Камень против бумаги.')
-    elif пользователь == 'камень' and компьютер == 'ножницы':
+    elif user == 'камень' and comp == 'ножницы':
         await ctx.send('Ви выиграли. Камень против ножниц.')
-    elif пользователь == 'бумага' and компьютер == 'камень':
+    elif user == 'бумага' and comp == 'камень':
         await ctx.send('Ви выиграли. Бумага против камня.')
-    elif пользователь == 'бумага' and компьютер == 'бумага':
+    elif user == 'бумага' and comp == 'бумага':
         await ctx.send('Ничья. Бумага против бумаги.')
-    elif пользователь == 'бумага' and компьютер == 'ножницы':
+    elif user == 'бумага' and comp == 'ножницы':
         await ctx.send('Ви проиграли. Бумага против ножниц.')
-    elif пользователь == 'ножницы' and компьютер == 'ножницы':
+    elif user == 'ножницы' and comp == 'ножницы':
         await ctx.send('Ничья. Ножницы против ножниц.')
-    elif пользователь == 'ножницы' and компьютер == 'бумага':
+    elif user == 'ножницы' and comp == 'бумага':
         await ctx.send('Ви выиграли. Ножницы против бумаги.')
-    elif пользователь == 'ножницы' and компьютер == 'камень':
+    elif user == 'ножницы' and comp == 'камень':
         await ctx.send('Ви проиграли. Ножницы против камня.')
         
 token = os.environ.get('BOT_TOKEN')
