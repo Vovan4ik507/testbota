@@ -23,7 +23,7 @@ async def roles(ctx, member: discord.Member):
 		e.add_field(name = 'Role', value = member.top_role.mention)
 	for role in range(len(member.roles)):
 		id[role] = member.roles[9:18]
-	e.add_field(name = 'Roles', value = <@id[0]>
+	e.add_field(name = 'Roles', value = f'<@{id[0]}>')
 	await ctx.send(embed = e)
 
 @Bot.command()
