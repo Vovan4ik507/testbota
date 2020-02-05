@@ -23,8 +23,8 @@ async def count(ctx, member: discord.Member):
 	await ctx.send(len(member.roles))
 
 @Bot.command()
-async def info(ctx, member: discord.Member, role):
-	await ctx.send(member.roles[role])
+async def info(ctx, member: discord.Member):
+	await ctx.send(member.roles[1])
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
