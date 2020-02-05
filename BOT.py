@@ -27,7 +27,7 @@ async def info(ctx, member: discord.Member):
 	await ctx.send(member.roles[0])
 	
 @Bot.command()
-async def try(ctx, member: discord.Member):
+async def self(ctx, member: discord.Member):
 	await ctx.send(f'@{member.roles[1]}')
 	
 @Bot.command()
