@@ -21,10 +21,6 @@ async def role(ctx, member: discord.Member):
 @Bot.command()
 async def roles(ctx, member: discord.Member):
 	id = []
-	if member.top_role.id == '646004417052540949':
-		await ctx.send(member.top_role)
-	else:
-		await ctx.send(member.top_role.mention)
 	for role in range(len(member.roles)):
 		id[role] += member.roles[9:18]
 		await ctx.send('<@{id[role}')
