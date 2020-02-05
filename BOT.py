@@ -22,8 +22,7 @@ async def roles(ctx, member: discord.Member):
 	else:
 		e.add_field(name = 'Role', value = member.top_role.mention)
 	e.add_field(name = 'Roles', value = member.roles)
-	e.add_field(name = 'Random', value = member.roles[9:18])
-	await ctx.send(embed = e)
+	await ctx.send(cotent = type(member.roles, embed = e)
 
 @Bot.command()
 async def ping(ctx):
