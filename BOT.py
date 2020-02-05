@@ -27,11 +27,15 @@ async def info(ctx, member: discord.Member):
 	await ctx.send(member.roles[0])
 	
 @Bot.command()
+async def try(ctx, member: discord.Member):
+	await ctx.send(f'@{member.roles[1]}')
+	
+@Bot.command()
 async def roles(ctx, member: discord.Member):
 	id = []
 	for role in range(len(member.roles)):
-		id[role] += member.roles[9:18]
-		await ctx.send('<@{id[role}')
+		id[role] += member.roles[role]
+		await ctx.send('@{id[role}')
 		
 @Bot.command()
 async def ping(ctx):
