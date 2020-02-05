@@ -16,7 +16,7 @@ async def say(ctx, *, arg):
 	
 @Bot.command()
 async def role(ctx, member: discord.Member):
-	await ctx.send(member.roles)
+	await ctx.send(member.roles, len(member.roles))
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
