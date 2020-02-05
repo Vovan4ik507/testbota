@@ -40,7 +40,7 @@ async def ping(ctx):
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
-	emb = discord.Embed(name = str(member), color = 0x39d0d6)
+	emb = discord.Embed(title = member.mention, description = member.mention color = 0x39d0d6)
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
 	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
