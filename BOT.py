@@ -16,16 +16,15 @@ async def say(ctx, *, arg):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	e = discord.Embed(title = 'Roles', color = 0x39d0d6)
+	id = []
 	if member.top_role.id == '646004417052540949':
-		e.add_field(name = 'Role', value = member.top_role)
+		await ctx.send(member.top_role)
 	else:
-		e.add_field(name = 'Role', value = member.top_role.mention)
+		await crx.send(member.top_role.mention)
 	for role in range(len(member.roles)):
-		id[role] = member.roles[9:18]
-	e.add_field(name = 'Roles', value = f'<@{id[0]}>')
-	await ctx.send(embed = e)
-
+		id[role] += member.roles[9:18]
+		await ctx.send('<@{id[role}')
+		
 @Bot.command()
 async def ping(ctx):
     	channel = ctx.channel
