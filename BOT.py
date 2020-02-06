@@ -11,8 +11,8 @@ async def hello(ctx):
     	await ctx.send(f"Hello {ctx.author.mention}")
 
 @Bot.command()
-async def say(ctx, *, arg):
-	await ctx.send(arg)
+async def say(ctx, *, text):
+	await ctx.send(text)
 	
 @Bot.command()
 async def clear(ctx):
@@ -39,9 +39,9 @@ async def user(ctx, member: discord.Member):
 	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
 	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
 	if member.top_role == member.roles[0]:
-		emb.add_field(name = "Highest role", value = member.top_role, inline=False)
+		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
 	else:
-		emb.add_field(name = "Highest role", value = member.top_role.mention, inline=False)
+		emb.add_field(name = "Highest role", value = member.top_role.mention, inline=  False)
 	for i in range(2):
     		f1 = open(f'{member}.txt', 'w')
     		f1.write(f'{member.roles}')
@@ -50,7 +50,7 @@ async def user(ctx, member: discord.Member):
 	for i in range(0,len(info)):
     		if info[i] == 'd':
         		role_id = info[i + 2 : i + 20]
-        		emb.add_field(name = 'Roles', value = f'<@&{role_id}>')
+        		emb.add_field(name = 'Roles', value = f'<@&{role_id}>', inline = False)
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
