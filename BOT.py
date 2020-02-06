@@ -23,14 +23,14 @@ async def say(ctx, *, arg):
 async def roles(ctx, member: discord.Member):
 	for i in range(2):
     		f1 = open('Vovan408.txt', 'w')
-    		f1.write("[<Role id=646004417052540949 name='@everyone'>, <Role id=648922356345208871 name='Mute'>, <Role id=674698599388545054 name='Ban'>]")
+    		f1.write(member.roles)
 	
 	f2 = open('Vovan408.txt', 'r')
 	info = f2.read()
 	for i in range(0,len(info)):
     		if info[i] == 'd':
         		role_id = info[i+2 : i + 20]
-			if role.id == 646004417052540949:
+			if role_id == 646004417052540949:
 				await ctx.send(member.roles[0])
 			else:
         			await ctx.send(f'<@&{role_id}>')
