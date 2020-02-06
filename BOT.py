@@ -59,6 +59,7 @@ async def user(ctx, member: discord.Member):
     			if info[i] == 'd':
         			role_id = info[i + 2 : i + 20]
         			a += f'<@&{role_id}>'
+		emb.add_field(name = 'Roles', value = a, inline = False)
 	else:
 		emb.add_field(name = 'Roles', value = member.roles[0], inline = False)
 	emb.set_thumbnail(url = member.avatar_url)
