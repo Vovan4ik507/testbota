@@ -16,7 +16,7 @@ async def say(ctx, *, text):
 	
 @Bot.command()
 async def emoji(ctx, emoji: discord.PartialEmoji):
-	await.send(emoji.id, emoji.name)
+	await ctx.send(emoji.id, emoji.name)
 	
 @Bot.command()
 async def clear(ctx):
