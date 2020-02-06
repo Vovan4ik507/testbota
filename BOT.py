@@ -24,7 +24,7 @@ async def info(ctx, member: discord.Member):
 
 @Bot.command()
 async def role(ctx, member: discord.Member):
-	await ctx.send(member.roles)
+	await ctx.send(f'{member.roles}')
 	
 @Bot.command()
 async def top(ctx, member: discord.Member):
