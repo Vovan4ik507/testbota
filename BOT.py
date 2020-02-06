@@ -18,9 +18,9 @@ async def say(ctx, *, arg):
 async def roles(ctx, member: discord.Member):
 	for i in range(2):
 		roles = member.roles
-    		f1 = open('Vovan408.txt', 'w')
+    		f1 = open(f'{member}.txt', 'w')
     		f1.write(roles)
-	f2 = open('Vovan408.txt', 'r')
+	f2 = open(f'{member}.txt', 'r')
 	info = f2.read()
 	for i in range(0,len(info)):
     		if info[i] == 'd':
