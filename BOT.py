@@ -27,10 +27,6 @@ async def info(ctx, member: discord.Member):
 	await ctx.send(member.roles[0])
 	
 @Bot.command()
-async def mention(ctx, member: discord.Member):
-	await ctx.send(member.roles[2].mention)
-	
-@Bot.command()
 async def top(ctx, member: discord.Member):
 	if member.top_role == member.roles[0]:
 		await ctx.send(member.top_role)
