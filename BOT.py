@@ -14,20 +14,6 @@ async def hello(ctx):
 async def say(ctx, *, arg):
 	await ctx.send(arg)
 	
-@Bot.command()
-async def count(ctx, member: discord.Member):
-	await ctx.send(len(member.roles))
-
-@Bot.command()
-async def info(ctx, member: discord.Member):
-	await ctx.send(member.roles[0])
-
-@Bot.command()
-async def role(ctx, member: discord.Member):
-	await ctx.send(str(member.roles))
-	
-@Bot.command()
-async def top(ctx, member: discord.Member):
 	if member.top_role == member.roles[0]:
 		await ctx.send(member.top_role)
 	else:
@@ -44,7 +30,10 @@ async def roles(ctx, member: discord.Member):
 	for i in range(0,len(info)):
     		if info[i] == 'd':
         		role_id = info[i+2 : i + 20]
-        		await ctx.send(f'<@&{role_id}>')
+			if role.id == 646004417052540949:
+				await ctx.send(member.roles[0])
+			else:
+        			await ctx.send(f'<@&{role_id}>')
 
 @Bot.command()
 async def clear(ctx):
