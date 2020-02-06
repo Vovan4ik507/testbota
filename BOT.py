@@ -43,10 +43,16 @@ async def user(ctx, member: discord.Member):
 	else:
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline=  False)
 	for i in range(2):
-    		f1 = open(f'{member}.txt', 'w')
-    		f1.write(f'{member.roles}')
-	f2 = open(f'{member}.txt', 'r')
-	info = f2.read()
+		try:
+    			f1 = open(f'{member}.txt', 'w')
+    			f1.write(f'{member.roles}')
+		finally:
+			f1.close()
+	try:
+		f2 = open(f'{member}.txt', 'r')
+		info = f2.read()
+	finally:
+		f2.close()
 	if len(info) > 48:
 		emb.add_field(name = 'Roles', value = member.roles[0], inline = True)
 		for i in range(48,len(info)):
