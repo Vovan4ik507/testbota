@@ -31,7 +31,8 @@ async def top(ctx, member: discord.Member):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	pass
+	discord.Role = 'Mute'
+	await tx.send(discord.Role.metion)
 
 @Bot.command()
 async def clear(ctx):
