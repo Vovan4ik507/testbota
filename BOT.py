@@ -16,10 +16,10 @@ async def say(ctx, *, arg):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
+	roles = member.roles
 	for i in range(2):
-		roles = member.roles
     		f1 = open(f'{member}.txt', 'w')
-    		f1.write(roles)
+    		f1.write(f'{roles}')
 	f2 = open(f'{member}.txt', 'r')
 	info = f2.read()
 	for i in range(0,len(info)):
