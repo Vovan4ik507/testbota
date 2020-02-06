@@ -44,7 +44,7 @@ async def roles(ctx, member: discord.Member):
 	for i in range(len(info)):
     		if info[i] == 'd':
         		role_id = info[i+2 : i + 20]
-			await ctx.send(f'<@role.id>')
+			await ctx.send(f'<@{role.id}>')
 
 @Bot.command()
 async def clear(ctx):
