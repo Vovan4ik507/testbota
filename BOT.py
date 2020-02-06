@@ -44,7 +44,7 @@ async def roles(ctx, member: discord.Member):
 	for i in range(0,len(info)):
     		if info[i] == 'd':
         		role_id = info[i+2 : i + 20]
-        		await ctx.send(f'<@{role_id}>')
+        		await ctx.send(f'<@&{role_id}>')
 
 @Bot.command()
 async def clear(ctx):
@@ -66,7 +66,7 @@ async def ping(ctx):
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
-	emb = discord.Embed(title = member.top_role.mention, description = member.mention, color = member.top_role.color)
+	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	emb.add_field(name = "Joined server at", value = str(member.joined_at)[:19], inline = False)
 	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
