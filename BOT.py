@@ -16,16 +16,18 @@ async def say(ctx, *, arg):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	roles = member.roles
 	for i in range(2):
     		f1 = open(f'{member}.txt', 'w')
-    		f1.write(f'{roles}')
+    		f1.write(f'{member.roles}')
 	f2 = open(f'{member}.txt', 'r')
 	info = f2.read()
 	for i in range(0,len(info)):
     		if info[i] == 'd':
         		role_id = info[i + 2 : i + 20]
-        		await ctx.send(f'<@&{role_id}>')
+			if role_id == 646004417052540949:
+				await ctx.send(member.roles[0])
+			else:
+        			await ctx.send(f'<@&{role_id}>')
 
 @Bot.command()
 async def clear(ctx):
