@@ -15,9 +15,6 @@ async def say(ctx, *, arg):
 	await ctx.send(arg)
 	
 @Bot.command()
-async def roles(ctx, member: discord.Member):
-	
-@Bot.command()
 async def clear(ctx):
 	await ctx.channel.purge(limit=10000)
 		
