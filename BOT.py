@@ -16,16 +16,7 @@ async def say(ctx, *, arg):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	for i in range(2):
-    		f1 = open(f'{member}.txt', 'w')
-    		f1.write(f'{member.roles}')
-	f2 = open(f'{member}.txt', 'r')
-	info = f2.read()
-	for i in range(0,len(info)):
-    		if info[i] == 'd':
-        		role_id = info[i + 2 : i + 20]
-        		await ctx.send(f'<@&{role_id}>')
-
+	
 @Bot.command()
 async def clear(ctx):
 	await ctx.channel.purge(limit=10000)
@@ -54,6 +45,15 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = member.top_role, inline=False)
 	else:
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline=False)
+	for i in range(2):
+    		f1 = open(f'{member}.txt', 'w')
+    		f1.write(f'{member.roles}')
+	f2 = open(f'{member}.txt', 'r')
+	info = f2.read()
+	for i in range(0,len(info)):
+    		if info[i] == 'd':
+        		role_id = info[i + 2 : i + 20]
+        		emb.add_field(name = 'Roles', value = f'<@&{role_id}>')
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
