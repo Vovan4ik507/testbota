@@ -39,7 +39,8 @@ async def roles(ctx, member: discord.Member):
 
 @Bot.command()
 async def clear(ctx, amo):
-	await ctx.channel.purge(limit = amo)
+	deleted = await channel.purge(limit=int(amo))
+	await channel.send('Deleted {} message(s)'.format(len(deleted)))
 		
 @Bot.command()
 async def ping(ctx):
