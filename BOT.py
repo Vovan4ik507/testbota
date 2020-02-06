@@ -15,10 +15,6 @@ async def say(ctx, *, arg):
 	await ctx.send(arg)
 	
 @Bot.command()
-async def role(ctx, member: discord.Member):
-	await ctx.send(member.roles)
-
-@Bot.command()
 async def count(ctx, member: discord.Member):
 	await ctx.send(len(member.roles))
 
@@ -39,9 +35,8 @@ async def roles(ctx, member: discord.Member):
 
 @Bot.command()
 async def clear(ctx):
-	await ctx.channel.purge(limit=10000)
 	amount = await ctx.channel.purge(limit=10000)
-	await channel.send('Deleted {} message(s)'.format(len(deleted)))
+	await channel.send(f'Deleted {amount} message(s)'))
 		
 @Bot.command()
 async def ping(ctx):
