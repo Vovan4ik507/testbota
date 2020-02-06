@@ -38,8 +38,8 @@ async def roles(ctx, member: discord.Member):
 	pass
 
 @Bot.command()
-async def clear(ctx, amount):
-	await channel.purge(limit = amount)
+async def clear(ctx, amount = 5):
+	await ctx.channel.purge(limit = amount)
 		
 @Bot.command()
 async def ping(ctx):
