@@ -27,11 +27,15 @@ async def info(ctx, member: discord.Member):
 	await ctx.send(member.roles[0])
 	
 @Bot.command()
+async def top(ctx, member: discord.Member):
+	await ctx.send(member.top_role)
+	
+@Bot.command()
 async def roles(ctx, member: discord.Member):
 	if member.top_role == member.roles[0]:
 		await ctx.send(member.top_role)
 	else:
-		await ctx.send(member.top_role_mention)
+		await ctx.send(member.top_role.mention)
 		
 @Bot.command()
 async def ping(ctx):
