@@ -35,7 +35,7 @@ async def top(ctx, member: discord.Member):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	
+	pass
 		
 @Bot.command()
 async def ping(ctx):
