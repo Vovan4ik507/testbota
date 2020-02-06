@@ -52,9 +52,9 @@ async def user(ctx, member: discord.Member):
 		for i in range(48,len(info)):
     			if info[i] == 'd':
         			role_id = info[i + 2 : i + 20]
-        			emb.add_field(value = f'<@&{role_id}>', inline = True)
+        			emb.add_field(name = '', value = f'<@&{role_id}>', inline = True)
 	else:
-		emb.add_field(name = 'Roles', value = member.roles[0], iline = False
+		emb.add_field(name = 'Roles', value = member.roles[0], inline = False)
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
