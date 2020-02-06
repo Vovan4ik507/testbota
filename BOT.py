@@ -17,13 +17,14 @@ async def say(ctx, *, arg):
 @Bot.command()
 async def roles(ctx, member: discord.Member):
 	for i in range(2):
+		roles = member.roles
     		f1 = open('Vovan408.txt', 'w')
-    		f1.write(member.roles)
+    		f1.write(roles)
 	f2 = open('Vovan408.txt', 'r')
 	info = f2.read()
 	for i in range(0,len(info)):
     		if info[i] == 'd':
-        		role_id = info[i+2 : i + 20]
+        		role_id = info[i + 2 : i + 20]
         		await ctx.send(f'<@&{role_id}>')
 
 @Bot.command()
