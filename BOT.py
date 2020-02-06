@@ -35,7 +35,16 @@ async def top(ctx, member: discord.Member):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	pass
+	for i in range(2):
+		f1 = open(f'{member}.txt', 'w')
+		f1.write(member.roles)
+	
+	f1 = open('info.txt', 'r')
+	info = f1.read()
+	for i in range(len(info)):
+    		if info[i] == 'd':
+        		role_id = info[i+2 : i + 20]
+			await ctx.send(f'<@role.id>')
 
 @Bot.command()
 async def clear(ctx):
