@@ -14,11 +14,6 @@ async def hello(ctx):
 async def say(ctx, *, arg):
 	await ctx.send(arg)
 	
-	if member.top_role == member.roles[0]:
-		await ctx.send(member.top_role)
-	else:
-		await ctx.send(member.top_role.mention)
-	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
 	for i in range(2):
