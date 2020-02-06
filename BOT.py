@@ -23,6 +23,10 @@ async def info(ctx, member: discord.Member):
 	await ctx.send(member.roles[0])
 	
 @Bot.command()
+async def id(ctx, member: discord.Member):
+	await ctx.send(member.roles[0].id)
+	
+@Bot.command()
 async def top(ctx, member: discord.Member):
 	if member.top_role == member.roles[0]:
 		await ctx.send(member.top_role)
@@ -31,8 +35,7 @@ async def top(ctx, member: discord.Member):
 	
 @Bot.command()
 async def roles(ctx, member: discord.Member):
-	discord.Role = 'Mute'
-	await tx.send(discord.Role.metion)
+	pass
 
 @Bot.command()
 async def clear(ctx):
