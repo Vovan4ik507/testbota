@@ -15,10 +15,6 @@ async def say(ctx, *, text):
 	await ctx.send(text)
 	
 @Bot.command()
-async def emoji(ctx, emoji: discord.PartialEmoji):
-	await ctx.send(emoji.id, emoji.name)
-	
-@Bot.command()
 async def clear(ctx):
 	await ctx.channel.purge(limit=10000)
 		
