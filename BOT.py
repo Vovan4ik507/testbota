@@ -53,12 +53,12 @@ async def user(ctx, member: discord.Member):
 		info = f2.read()
 	finally:
 		f2.close()
-	if len(info) > 48:
+	if len(info) > 47:
 		emb.add_field(name = 'Roles', value = member.roles[0], inline = True)
-		for i in range(48,len(info)):
+		for i in range(47, len(info)):
     			if info[i] == 'd':
         			role_id = info[i + 2 : i + 20]
-        			emb.add_field(name = '', value = f'<@&{role_id}>', inline = True)
+        			emb.add_field(name = 'Roles', value = f'<@&{role_id}>', inline = True)
 	else:
 		emb.add_field(name = 'Roles', value = member.roles[0], inline = False)
 	emb.set_thumbnail(url = member.avatar_url)
