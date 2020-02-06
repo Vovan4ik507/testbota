@@ -28,7 +28,7 @@ async def info(ctx, member: discord.Member):
 	
 @Bot.command()
 async def mention(ctx, member: discord.Member):
-	await ctx.send(member.roles[1].mention)
+	await ctx.send(member.roles[2].mention)
 	
 @Bot.command()
 async def top(ctx, member: discord.Member):
