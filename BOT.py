@@ -54,7 +54,7 @@ async def user(ctx, member: discord.Member):
 	finally:
 		f2.close()
 	if len(info) > 47:
-		emb.add_field(name = 'Roles', value = member.roles[0], inline = True)
+		emb.add_field(name = 'Roles', value = 1, inline = True)
 		for i in range(47, len(info)):
     			if info[i] == 'd':
         			role_id = info[i + 2 : i + 20]
