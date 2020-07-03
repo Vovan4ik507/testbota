@@ -42,7 +42,7 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
 	else:
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
-    	info = member.roles
+    	
 	
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
