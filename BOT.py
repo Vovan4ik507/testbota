@@ -19,6 +19,20 @@ async def clear(ctx):
 	await ctx.channel.purge(limit=10000)
 	
 @Bot.command()
+async def roles(ctx, member: discord.Member):
+	info = member.roles
+	role_mention = []
+	if len(info) > 47:
+        	role_mention[0] = [member.roles[0]]
+        	for i in range(47, len(info)):
+                	if info[i] == 'd':
+                        	role_id = info[i + 2 : i + 20]
+                        	role_mention += f'<@&{role_id}>'
+    	await ctx.send(role_mention)
+        else:
+            await ctx.send(member.roles[0])
+	
+@Bot.command()
 async def ping(ctx):
     	channel = ctx.channel
     	t1 = time.perf_counter()
