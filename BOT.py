@@ -50,6 +50,7 @@ async def user(ctx, member: discord.Member):
                 	if info[i] == 'd':
                         	role_id = info[i + 2 : i + 20]
                         	role_mention += f'<@&{role_id}>'
+		emb.add_field(name = 'Roles', value = role_mention, inline = True)
         else:
             emb.add_field(name = 'Roles', value = member.roles[0], inline = False)
 
