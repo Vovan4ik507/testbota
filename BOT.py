@@ -19,10 +19,6 @@ async def clear(ctx):
 	await ctx.channel.purge(limit=10000)
 	
 @Bot.command()
-async def roles(ctx, member: discord.Member):
-	await ctx.send(member.roles)
-		
-@Bot.command()
 async def ping(ctx):
     	channel = ctx.channel
     	t1 = time.perf_counter()
@@ -46,7 +42,16 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
 	else:
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
-	
+	info = member.roles
+	if len(info) > 47:
+            emb.add_field(name = 'Roles', value = member.roles[0], inline = True)
+            for i in range(47, len(info)):
+                    if info[i] == 'd':
+                            role_id = info[i + 2 : i + 20]
+                        emb.add_field(name = 'Roles', value = f'<@&{role_id}>', inline = True)
+        else:
+            emb.add_field(name = 'Roles', value = member.roles[0], inline = False)
+
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
