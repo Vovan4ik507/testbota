@@ -43,12 +43,13 @@ async def user(ctx, member: discord.Member):
 	else:
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
 	info = member.roles
+	role_mention = []
 	if len(info) > 47:
-            emb.add_field(name = 'Roles', value = member.roles[0], inline = True)
-            for i in range(47, len(info)):
-                    if info[i] == 'd':
-                            role_id = info[i + 2 : i + 20]
-                        emb.add_field(name = 'Roles', value = f'<@&{role_id}>', inline = True)
+        	role_mention[0] = [member.roles[0]]
+        	for i in range(47, len(info)):
+                	if info[i] == 'd':
+                        	role_id = info[i + 2 : i + 20]
+                        	role_mention += f'<@&{role_id}>'
         else:
             emb.add_field(name = 'Roles', value = member.roles[0], inline = False)
 
