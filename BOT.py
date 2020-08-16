@@ -12,7 +12,7 @@ async def say(ctx, *, text):
 	
 @Bot.command()
 async def fraction(ctx, member: discord.Member):
-	for i in range(0, len(member.roles)):
+	for i in range(0, len(member.roles)-1):
 		if member.roles[i] == 'ЧВР':
 			await ctx.send('Ты ЧВР')
 	
