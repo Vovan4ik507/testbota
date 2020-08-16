@@ -14,6 +14,7 @@ async def say(ctx, *, text):
 async def fraction(ctx, member: discord.Member):
 	for i in range(0, len(member.roles)):
 		if member.roles[i] == 'ЧВР':
+			await ctx.send('Ты ЧВР')
 	
 @Bot.command()
 async def ping(ctx):
