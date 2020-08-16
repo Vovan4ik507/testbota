@@ -27,8 +27,8 @@ async def ping(ctx):
     	green = discord.Color.green()
     	desc=f":heartbeat: **{latency}**ms \n :stopwatch: **{t}**ms"
     	em = discord.Embed(title = ":ping_pong: Pong",description = desc, color = green)
-		em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
-		await ctx.send(embed = em)
+	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
+	await ctx.send(embed = em)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
