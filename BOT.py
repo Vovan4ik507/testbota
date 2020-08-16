@@ -5,14 +5,6 @@ import os
 import time
 
 Bot = commands.Bot(command_prefix = '-')
-
-@Bot.command()
-async def say(ctx, *, text):
-	await ctx.send(text)
-	
-@Bot.command()
-async def roles(ctx, member: discord.Member):
-	await ctx.send(member.roles)
 	
 @Bot.command()
 async def ping(ctx):
