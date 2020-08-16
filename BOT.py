@@ -13,8 +13,7 @@ async def say(ctx, *, text):
 @Bot.command()
 async def fraction(ctx, member:discord.Member):
 	for i in range(0, len(member.roles):
-		if member.roles[i].id == 674698599388545054:
-			await ctx.send('Твоя фракцци это нейтралы')
+		if member.roles[i] == 'ЧВР':
 	
 @Bot.command()
 async def ping(ctx):
