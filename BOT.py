@@ -13,10 +13,6 @@ async def say(ctx, *, text):
 @Bot.command()
 async def roles(ctx, member: discord.Member):
 	await ctx.send(member.roles)
-
-@Bot.command()
-async def role(ctx, member: discord.Member, number):
-	await ctx.send(member.roles[number])
 	
 @Bot.command()
 async def ping(ctx):
