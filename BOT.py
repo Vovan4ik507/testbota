@@ -12,13 +12,13 @@ async def say(ctx, *, text):
 	
 @Bot.command()
 async def fraction(ctx, member:discord.Member):
-		for i in range(0, len(member.roles):
-				if member.roles[i].id == 674698599388545054:
-					   await ctx.send('Твоя фракцци это нейтралы')
+	for i in range(0, len(member.roles):
+		if member.roles[i].id == 674698599388545054:
+			await ctx.send('Твоя фракцци это нейтралы')
 	
 @Bot.command()
 async def ping(ctx):
-   		channel = ctx.channel
+   	channel = ctx.channel
     	t1 = time.perf_counter()
     	await channel.trigger_typing()
     	t2 = time.perf_counter()
