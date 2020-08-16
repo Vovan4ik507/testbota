@@ -11,12 +11,14 @@ async def say(ctx, *, text):
 	await ctx.send(text)
 	
 @Bot.command()
-async def clear(ctx):
-	await ctx.channel.purge(limit=10000)
+async def fraction(ctx, member:discord.Member):
+		for i in range(0, len(member.roles):
+				if member.roles[i].id == 674698599388545054:
+					   await ctx.send('Твоя фракцци это нейтралы')
 	
 @Bot.command()
 async def ping(ctx):
-    	channel = ctx.channel
+   		channel = ctx.channel
     	t1 = time.perf_counter()
     	await channel.trigger_typing()
     	t2 = time.perf_counter()
@@ -25,8 +27,8 @@ async def ping(ctx):
     	green = discord.Color.green()
     	desc=f":heartbeat: **{latency}**ms \n :stopwatch: **{t}**ms"
     	em = discord.Embed(title = ":ping_pong: Pong",description = desc, color = green)
-    	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
-    	await ctx.send(embed = em)
+		em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
+		await ctx.send(embed = em)
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
