@@ -7,10 +7,6 @@ import time
 Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
-async def hello(ctx):
-    	await ctx.send(f"Hello {ctx.author.mention}")
-
-@Bot.command()
 async def say(ctx, *, text):
 	await ctx.send(text)
 	
