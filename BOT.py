@@ -370,8 +370,8 @@ async def user(ctx, member: discord.Member):
 	
 	while day > 7:
 		if day // 7 :
-		week += 1
-		day -= 7
+			week += 1
+			day -= 7
 	
 	year = now_time_year - joined_time_year
 	
