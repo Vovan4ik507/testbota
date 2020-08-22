@@ -24,10 +24,10 @@ async def created(ctx, member: discord.Member):
 	created_time_month = str(member.created_at)[5:7]
 	created_time_month = int(created_time_month)
 	
-	if (now_time_month == 01 or now_time_month == 03 or now_time_month == 05 or now_time_month == 07
-	    or now_time_month == 08 or now_time_month == 10 or now_time_month == 12):
+	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
+	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
 		day_bonus = 31
-	elif now_time_month == 02:
+	elif now_time_month == 2:
 		day_bonus = 28
 	else:
 		day_bonus = 30
