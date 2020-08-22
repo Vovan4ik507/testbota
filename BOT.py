@@ -13,6 +13,13 @@ async def now(ctx):
 	await ctx.send(now_time)
 
 @Bot.command()
+async def created(ctx, member: discord.Member):
+	now_time_year = str(datetime.date.today())[0:4]
+	created_time_year = str(member.created_at)[0:4]
+	year = int(now_time_year) - int(created_time_year)
+	await ctx.send(year)
+	
+@Bot.command()
 async def user(ctx, member: discord.Member):
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
@@ -110,6 +117,20 @@ async def user(ctx, member: discord.Member):
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = emb)
 
+@Bot.command()
+async def ping(ctx):
+	channel = ctx.channel
+	t1 = time.perf_counter()
+	await channel.trigger_typing()
+	t2 = time.perf_counter()
+	latency = round(Bot.latency *1000)
+	t = round((t2-t1)*1000)
+	green = discord.Color.green()
+	desc=f":heartbeat: **{latency}**ms \n :stopwatch: **{t}**ms"
+	em = discord.Embed(title = ":ping_pong: Pong",description = desc, color = green)
+    	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
+    	await ctx.send(embed = em)
+	
 @Bot.event
 async def on_ready():
 	print('Bot is online')
