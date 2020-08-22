@@ -62,227 +62,227 @@ async def joined(ctx, member: discord.Member):
 		if month == 0:
 			if week == 0:
 				if day == 0:
-					msg = 'You joined to this server today'
+					join_msg = 'Joined to this server today'
 				elif day == 1:
-					msg = 'You joined to this server yesterday'
+					join_msg = 'Joined to this server yesterday'
 				else:
-					msg = f'You joined to this server {str(day)} days ago'
+					join_msg = f'Joined to this server {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = 'You joined to this server 1 week ago'
+					join_msg = 'Joined to this server 1 week ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 week and 1 day ago'
+					join_msg = 'Joined to this server 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 week and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 week and {str(day)} days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server {str(week)} weeks ago'
+					join_msg = f'Joined to this server {str(week)} weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(week)} weeks and 1 day ago'
+					join_msg = f'Joined to this server {str(week)} weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(week)} weeks and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(week)} weeks and ' + str(day) + ' days ago'
 		elif month == 1:
 			if week == 0:
 				if day == 0:
-					msg = 'You joined to this server 1 month ago'
+					join_msg = 'Joined to this server 1 month ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 month and 1 day ago'
+					join_msg = 'Joined to this server 1 month and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 month and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 month and {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = 'You joined to this server 1 month and 1 week ago'
+					join_msg = 'Joined to this server 1 month and 1 week ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 month, 1 week and 1 day ago'
+					join_msg = 'Joined to this server 1 month, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 month, 1 week and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 month, 1 week and {str(day)} days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server 1 month {str(week)} weeks ago'
+					join_msg = f'Joined to this server 1 month {str(week)} weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server 1 month, {str(week)} weeks and 1 day ago'
+					join_msg = f'Joined to this server 1 month, {str(week)} weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
 					
 		else:
 			if week == 0:
 				if day == 0:
-					msg = f'You joined to this server {str(month)} month ago'
+					join_msg = f'Joined to this server {str(month)} month ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(month)} month and 1 day ago'
+					join_msg = f'Joined to this server {str(month)} month and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(month)} and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(month)} and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = f'You joined to this server {month} month and 1 week ago'
+					join_msg = f'Joined to this server {month} month and 1 week ago'
 				elif day == 1:
-					msg = f'You joined to this server {month} month, 1 week and 1 day ago'
+					join_msg = f'Joined to this server {month} month, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server {month} month, 1 week and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {month} month, 1 week and ' + str(day) + ' days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server {month} month and ' + str(week) + ' weeks ago'
+					join_msg = f'Joined to this server {month} month and ' + str(week) + ' weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server {month} month and ' + str(week) + ' weeks and 1 day ago'
+					join_msg = f'Joined to this server {month} month and ' + str(week) + ' weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server {month} month and ' + str(week) + f' weeks and {str(day)} days ago'
+					join_msg = f'Joined to this server {month} month and ' + str(week) + f' weeks and {str(day)} days ago'
 					
 	elif year == 1:
 		if month == 0:
 			if week == 0:
 				if day == 0:
-					msg = 'You joined to this server 1 year ago'
+					join_msg = 'Joined to this server 1 year ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 year and 1 day ago'
+					join_msg = 'Joined to this server 1 year and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 year and {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = 'You joined to this server 1 year and 1 week ago'
+					join_msg = 'Joined to this server 1 year and 1 week ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 year, 1 week and 1 day ago'
+					join_msg = 'Joined to this server 1 year, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, 1 week and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 year, 1 week and {str(day)} days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server 1 year and {str(week)} weeks ago'
+					join_msg = f'Joined to this server 1 year and {str(week)} weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server 1 year, {str(week)} weeks and 1 day ago'
+					join_msg = f'Joined to this server 1 year, {str(week)} weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, {str(week)} weeks and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server 1 year, {str(week)} weeks and ' + str(day) + ' days ago'
 					
 		elif month == 1:
 			if week == 0:
 				if day == 0:
-					msg = 'You joined to this server 1 year and 1 month ago'
+					join_msg = 'You joined to this server 1 year and 1 month ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 year, 1 month and 1 day ago'
+					join_msg = 'Joined to this server 1 year, 1 month and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, 1 month and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 year, 1 month and {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = 'You joined to this server 1 year, 1 month and 1 week ago'
+					join_msg = 'Joined to this server 1 year, 1 month and 1 week ago'
 				elif day == 1:
-					msg = 'You joined to this server 1 year, 1 month, 1 week and 1 day ago'
+					join_msg = 'Joined to this server 1 year, 1 month, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, 1 month, 1 week and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 year, 1 month, 1 week and {str(day)} days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server 1 year, 1 month and {str(week)} weeks ago'
+					join_msg = f'Joined to this server 1 year, 1 month and {str(week)} weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server 1 year, 1 month, {str(week)} weeks and 1 day ago'
+					join_msg = f'Joined to this server 1 year, 1 month, {str(week)} weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server 1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
 					
 		else:
 			if week == 0:
 				if day == 0:
-					msg = f'You joined to this server 1 year and {str(month)} month ago'
+					join_msg = f'Joined to this server 1 year and {str(month)} month ago'
 				elif day == 1:
-					msg = f'You joined to this server 1 year, {str(month)} month and 1 day ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, {str(month)} and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = f'You joined to this server 1 year, {str(month)} month and 1 week ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month and 1 week ago'
 				elif day == 1:
-					msg = f'You joined to this server 1 year, {str(month)} month, 1 week and 1 day ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server 1 year, {str(month)} month and ' + str(week) + ' weeks ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month and ' + str(week) + ' weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server 1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server 1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
 	else:
 		if month == 0:
 			if week == 0:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years ago'
+					join_msg = f'Joined to this server {str(year)} years ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(year)} years and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years and 1 week ago'
+					join_msg = f'Joined to this server {str(year)} years and 1 week ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, 1 week and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, 1 week and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 week and ' + str(day) + ' days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years and ' + str(week) + ' weeks ago'
+					join_msg = f'Joined to this server {str(year)} years and ' + str(week) + ' weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, ' + str(week) + ' weeks and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(week) + ' weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
 					
 		elif month == 1:
 			if week == 0:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years and 1 month ago'
+					join_msg = f'Joined to this server {str(year)} years and 1 month ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, 1 month and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, 1 month and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years, 1 month and 1 week ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month and 1 week ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, 1 month, 1 week and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years, 1 month and ' + str(week) + ' weeks ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month and ' + str(week) + ' weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
+					join_msg = f'Joined to this server {str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
 					
 		else:
 			if week == 0:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years and ' + str(month) + ' month ago'
+					join_msg = f'Joined to this server {str(year)} years and ' + str(month) + ' month ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, ' +  str(month) + ' month and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, ' +  str(month) + ' month and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + f' and {str(day)} days ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' and {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + ' month and 1 week ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + ' month and 1 week ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
 					
 			else:
 				if day == 0:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
 				elif day == 1:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
 				else:
-					msg = f'You joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'	
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'	
 	await ctx.send(msg)
 	
 @Bot.command()
