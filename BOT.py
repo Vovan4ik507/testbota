@@ -283,7 +283,7 @@ async def joined(ctx, member: discord.Member):
 					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
 				else:
 					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'	
-	await ctx.send(msg)
+	await ctx.send(join_msg)
 	
 @Bot.command()
 async def created(ctx, member: discord.Member):
