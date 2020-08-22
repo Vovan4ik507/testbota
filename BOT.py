@@ -15,7 +15,7 @@ async def user(ctx, member: discord.Member):
 		day_index = 'st'
 	else:
 		day_index = ''
-    	emb.add_field(name = "Joined server at", value = str(member.joined_at)[8:10] + day_index, inline = False)
+    	emb.add_field(name = "Joined server at", value = f'{str(member.joined_at)[8:10]}{day_index}', inline = False)
     	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
     	if member.top_role == member.roles[0]:
         	emb.add_field(name = "Highest role", value = member.top_role, inline = False)
