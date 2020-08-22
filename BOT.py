@@ -11,12 +11,11 @@ Bot = commands.Bot(command_prefix = '-')
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
-	joined = str(member.joined_at)
-	if joined[8:10] == '01' or joined[8:10] == '21' or joined[8:10] == '31':
-		day = joined[8:10] + 'st'
+	if str(member.joined_at)[8:10] == '01' or str(member.joined_at)[8:10] == '21' or str(member.joined_at)[8:10] == '31':
+		day = str(member.joined_at)[8:10] + 'st'
 	else:
-		day = joined[8:10]
-    	emb.add_field(name = "Joined server at", value = joined[8:10], inline = False)
+		day = str(member.joined_at)[8:10]
+    	emb.add_field(name = "Joined server at", value = str(member.joined_at)[8:10], inline = False)
     	emb.add_field(name = "Created account at", value = str(member.created_at)[:19], inline = False)
     	if member.top_role == member.roles[0]:
         	emb.add_field(name = "Highest role", value = member.top_role, inline = False)
