@@ -24,20 +24,45 @@ async def created(ctx, member: discord.Member):
 	created_time_month = str(member.created_at)[5:7]
 	created_time_month = int(created_time_month)
 	
+	if (now_time_month == 01 or now_time_month == 03 or now_time_month == 05 or now_time_month == 07
+	    or now_time_month == 08 or now_time_month == 10 or now_time_month == 12):
+		day_bonus = 31
+	elif now_time_month == 02:
+		day_bonus = 28
+	else:
+		day_bonus = 30
+	
+	now_time_day = str(datetime.date.today())[8:10]
+	now_time_day = int(now_time_day)
+	created_time_day = str(member.created_at)[8:10]
+	created_time_day = int(created_time_day)
+	
+	if now_time_day < created_time_day:
+		now_time_month -= 1
+		now_time_day += day_bonus
+		day = now_time_day - created_time_day
+	else:
+		day = now_time_day - created_time_day
+	
 	if now_time_month < created_time_month:
 		now_time_year -= 1
 		now_time_month += 12
 		month = now_time_month - created_time_month
 	else:
 		month = now_time_month - created_time_month
-		
+	
+	while day > 7:
+		week = day // 7
+		day -= 7
+	
 	year = now_time_year - created_time_year
-	await ctx.send('Account created ' +  str(year) + 'years and ' + str(month) + 'month ago')
+	await ctx.send('Account created ' +  str(year) + 'years and ' + str(month) + 'month and ' + str(week) + 'weeks and ' + str(day) + 'days ago')
 	
 @Bot.command()
 async def user(ctx, member: discord.Member):
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
+	
 	if str(member.joined_at)[8:10] == '01':
 		join_day = str(member.joined_at)[9:10] + 'st'
 	elif str(member.joined_at)[8:10] == '02':
@@ -55,6 +80,7 @@ async def user(ctx, member: discord.Member):
 		join_day = str(member.joined_at)[8:10] + 'rd'
 	else:
 		join_day = str(member.joined_at)[8:10] + 'th'
+		
 	if str(member.joined_at)[5:7] == '01':
 		join_month = ' February '
 	elif str(member.joined_at)[5:7] == '02':
@@ -79,8 +105,11 @@ async def user(ctx, member: discord.Member):
 		join_month = ' November '
 	elif str(member.joined_at)[5:7] == '12':
 		join_month = ' December '
+		
 	join_date = join_day + join_month + str(member.joined_at)[2:4]
-	emb.add_field(name = "Joined servert", value = join_date, inline = False)
+	
+	emb.add_field(name = "Joined server", value = join_date, inline = False)
+	
 	if str(member.created_at)[8:10] == '01':
 		create_day = str(member.created_at)[9:10] + 'st'
 	elif str(member.created_at)[8:10] == '02':
@@ -98,6 +127,7 @@ async def user(ctx, member: discord.Member):
 		create_day = str(member.created_at)[8:10] + 'rd'
 	else:
 		create_day = str(member.created_at)[8:10] + 'th'
+		
 	if str(member.created_at)[5:7] == '01':
 		create_month = ' February '
 	elif str(member.created_at)[5:7] == '02':
@@ -122,7 +152,9 @@ async def user(ctx, member: discord.Member):
 		create_month = ' November '
 	elif str(member.created_at)[5:7] == '12':
 		create_month = ' December '
+		
 	create_date = create_day + create_month + str(member.created_at)[2:4]
+	
 	emb.add_field(name = "Created account", value = create_date, inline = False)
 	if member.top_role == member.roles[0]:
 		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
