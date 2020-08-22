@@ -2,10 +2,14 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import os
+import datetime
 import time
 
 Bot = commands.Bot(command_prefix = '-')
-#value = str(member.joined_at)[:19]
+
+@Bot.command()
+async def now_time(ctx):
+	await ctx.send(datetime.datetime)
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
