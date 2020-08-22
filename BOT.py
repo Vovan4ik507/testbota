@@ -8,8 +8,8 @@ import time
 Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
-async def now_time(ctx):
-	await ctx.send(datetime.datetime)
+async def now-time(ctx):
+	await ctx.send(datetime.datetime.year)
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
