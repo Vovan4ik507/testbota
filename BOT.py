@@ -254,7 +254,7 @@ async def created(ctx, member: discord.Member):
 				if day == 0:
 					msg = f'Account created {str(year)} years, 1 month and ' + str(week) + ' weeks ago'
 				elif day == 1:
-					msg = f'Account created {str(year)} years, 1 month, ' + str(week) ' weeks and 1 day ago'
+					msg = f'Account created {str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
 				else:
 					msg = f'Account created {str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
 					
