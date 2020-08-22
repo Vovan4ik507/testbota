@@ -36,6 +36,7 @@ async def joined(ctx, member: discord.Member):
 	now_time_day = int(now_time_day)
 	joined_time_day = str(member.created_at)[8:10]
 	joined_time_day = int(joined_time_day)
+	week = 0
 	
 	if now_time_day < joined_time_day:
 		now_time_month -= 1
