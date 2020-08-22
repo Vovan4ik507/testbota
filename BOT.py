@@ -9,7 +9,7 @@ Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
 async def now(ctx):
-	now_time = date.today()
+	now_time = datetime.date.today()
 	await ctx.send(now_time)
 
 @Bot.command()
