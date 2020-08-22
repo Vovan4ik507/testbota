@@ -19,8 +19,6 @@ async def created(ctx, member: discord.Member):
 	created_time_year = str(member.created_at)[0:4]
 	created_time_year = int(created_time_year)
 	
-	year = now_time_year - created_time_year
-	
 	now_time_month = str(datetime.date.today())[5:7]
 	now_time_month = int(now_time_month)
 	created_time_month = str(member.created_at)[5:7]
@@ -32,6 +30,8 @@ async def created(ctx, member: discord.Member):
 		month = now_time_month - created_time_month
 	else:
 		month = now_time_month - created_time_month
+		
+	year = now_time_year - created_time_year
 	await ctx.send('Account created ' +  str(year) + 'years and ' + str(month) + 'month ago')
 	
 @Bot.command()
