@@ -8,279 +8,6 @@ import time
 Bot = commands.Bot(command_prefix = '-')		
 	
 @Bot.command()
-async def created(ctx, member: discord.Member):
-	now_time_year = str(datetime.date.today())[0:4]
-	now_time_year = int(now_time_year)
-	created_time_year = str(member.created_at)[0:4]
-	created_time_year = int(created_time_year)
-	
-	now_time_month = str(datetime.date.today())[5:7]
-	now_time_month = int(now_time_month)
-	created_time_month = str(member.created_at)[5:7]
-	created_time_month = int(created_time_month)
-	
-	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
-	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
-		day_bonus = 31
-	elif now_time_month == 2:
-		day_bonus = 28
-	else:
-		day_bonus = 30
-	
-	now_time_day = str(datetime.date.today())[8:10]
-	now_time_day = int(now_time_day)
-	created_time_day = str(member.created_at)[8:10]
-	created_time_day = int(created_time_day)
-	week = 0
-	
-	if now_time_day < created_time_day:
-		now_time_month -= 1
-		now_time_day += day_bonus
-		day = now_time_day - created_time_day
-	else:
-		day = now_time_day - created_time_day
-	
-	if now_time_month < created_time_month:
-		now_time_year -= 1
-		now_time_month += 12
-		month = now_time_month - created_time_month
-	else:
-		month = now_time_month - created_time_month
-	
-	while day > 7:
-		week = day // 7
-		day -= 7
-	
-	year = now_time_year - created_time_year
-	
-	if year == 0:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					msg = 'Account created today'
-				elif day == 1:
-					msg = 'Account created yesterday'
-				else:
-					msg = f'Account created {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = 'Account created 1 week ago'
-				elif day == 1:
-					msg = 'Account created 1 week and 1 day ago'
-				else:
-					msg = f'Account created 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created {str(week)} weeks ago'
-				elif day == 1:
-					msg = f'Account created {str(week)} weeks and 1 day ago'
-				else:
-					msg = f'Account created {str(week)} weeks and ' + str(day) + ' days ago'
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					msg = 'Account created 1 month ago'
-				elif day == 1:
-					msg = 'Account created 1 month and 1 day ago'
-				else:
-					msg = f'Account created 1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = 'Account created 1 month and 1 week ago'
-				elif day == 1:
-					msg = 'Account created 1 month, 1 week and 1 day ago'
-				else:
-					msg = f'Account created 1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created 1 month {str(week)} weeks ago'
-				elif day == 1:
-					msg = f'Account created 1 month, {str(week)} weeks and 1 day ago'
-				else:
-					msg = f'Account created 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					msg = f'Account created {str(month)} month ago'
-				elif day == 1:
-					msg = f'Account created {str(month)} month and 1 day ago'
-				else:
-					msg = f'Account created {str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = f'Account created {month} month and 1 week ago'
-				elif day == 1:
-					msg = f'Account created {month} month, 1 week and 1 day ago'
-				else:
-					msg = f'Account created {month} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created {month} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					msg = f'Account created {month} month and ' + str(week) + ' weeks and 1 day ago'
-				else:
-					msg = f'Account created {month} month and ' + str(week) + f' weeks and {str(day)} days ago'
-					
-	elif year == 1:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					msg = 'Account created 1 year ago'
-				elif day == 1:
-					msg = 'Account created 1 year and 1 day ago'
-				else:
-					msg = f'Account created 1 year and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = 'Account created 1 year and 1 week ago'
-				elif day == 1:
-					msg = 'Account created 1 year, 1 week and 1 day ago'
-				else:
-					msg = f'Account created 1 year, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created 1 year and {str(week)} weeks ago'
-				elif day == 1:
-					msg = f'Account created 1 year, {str(week)} weeks and 1 day ago'
-				else:
-					msg = f'Account created 1 year, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					msg = 'Account created 1 year and 1 month ago'
-				elif day == 1:
-					msg = 'Account created 1 year, 1 month and 1 day ago'
-				else:
-					msg = f'Account created 1 year, 1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = 'Account created 1 year, 1 month and 1 week ago'
-				elif day == 1:
-					msg = 'Account created 1 year, 1 month, 1 week and 1 day ago'
-				else:
-					msg = f'Account created 1 year, 1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created 1 year, 1 month and {str(week)} weeks ago'
-				elif day == 1:
-					msg = f'Account created 1 year, 1 month, {str(week)} weeks and 1 day ago'
-				else:
-					msg = f'Account created 1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					msg = f'Account created 1 year and {str(month)} month ago'
-				elif day == 1:
-					msg = f'Account created 1 year, {str(month)} month and 1 day ago'
-				else:
-					msg = f'Account created 1 year, {str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = f'Account created 1 year, {str(month)} month and 1 week ago'
-				elif day == 1:
-					msg = f'Account created 1 year, {str(month)} month, 1 week and 1 day ago'
-				else:
-					msg = f'Account created 1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created 1 year, {str(month)} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					msg = f'Account created 1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					msg = f'Account created 1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
-	else:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					msg = f'Account created {str(year)} years ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = f'Account created {str(year)} years and 1 week ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, 1 week and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created {str(year)} years and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					msg = f'Account created {str(year)} years and 1 month ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, 1 month and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, 1 month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = f'Account created {str(year)} years, 1 month and 1 week ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, 1 month, 1 week and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created {str(year)} years, 1 month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					msg = f'Account created {str(year)} years and ' + str(month) + ' month ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, ' +  str(month) + ' month and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					msg = f'Account created {str(year)} years, ' + str(month) + ' month and 1 week ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					msg = f'Account created {str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
-				elif day == 1:
-					msg = f'Account created {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
-				else:
-					msg = f'Account created {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'	
-	await ctx.send(msg)
-	
-@Bot.command()
 async def user(ctx, member: discord.Member):
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
@@ -601,7 +328,7 @@ async def user(ctx, member: discord.Member):
 				else:
 					join_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'
 	
-	join_info = join_date + f'({join_msg})'
+	join_info = join_date + f' ({join_msg})'
 	
 	emb.add_field(name = "Joined server", value = join_info, inline = False)
 	
@@ -650,7 +377,280 @@ async def user(ctx, member: discord.Member):
 		
 	create_date = create_day + create_month + str(member.created_at)[2:4]
 	
-	emb.add_field(name = "Created account", value = create_date, inline = False)
+	now_time_year = str(datetime.date.today())[0:4]
+	now_time_year = int(now_time_year)
+	created_time_year = str(member.created_at)[0:4]
+	created_time_year = int(created_time_year)
+	
+	now_time_month = str(datetime.date.today())[5:7]
+	now_time_month = int(now_time_month)
+	created_time_month = str(member.created_at)[5:7]
+	created_time_month = int(created_time_month)
+	
+	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
+	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
+		day_bonus = 31
+	elif now_time_month == 2:
+		day_bonus = 28
+	else:
+		day_bonus = 30
+	
+	now_time_day = str(datetime.date.today())[8:10]
+	now_time_day = int(now_time_day)
+	created_time_day = str(member.created_at)[8:10]
+	created_time_day = int(created_time_day)
+	week = 0
+	
+	if now_time_day < created_time_day:
+		now_time_month -= 1
+		now_time_day += day_bonus
+		day = now_time_day - created_time_day
+	else:
+		day = now_time_day - created_time_day
+	
+	if now_time_month < joined_time_month:
+		now_time_year -= 1
+		now_time_month += 12
+		month = now_time_month - created_time_month
+	else:
+		month = now_time_month - created_time_month
+	
+	while day > 7:
+		if day // 7 :
+			week += 1
+			day -= 7
+	
+	year = now_time_year - created_time_year
+	
+	if year == 0:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					create_msg = 'Today'
+				elif day == 1:
+					create_msg = '1 day ago'
+				else:
+					create_msg = f'{str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = '1 week ago'
+				elif day == 1:
+					create_msg = '1 week and 1 day ago'
+				else:
+					create_msg = f'1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'{str(week)} weeks ago'
+				elif day == 1:
+					create_msg = f'{str(week)} weeks and 1 day ago'
+				else:
+					create_msg = f'{str(week)} weeks and ' + str(day) + ' days ago'
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					create_msg = '1 month ago'
+				elif day == 1:
+					create_msg = '1 month and 1 day ago'
+				else:
+					create_msg = f'1 month and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = '1 month and 1 week ago'
+				elif day == 1:
+					create_msg = '1 month, 1 week and 1 day ago'
+				else:
+					create_msg = f'1 month, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'1 month {str(week)} weeks ago'
+				elif day == 1:
+					create_msg = f'1 month, {str(week)} weeks and 1 day ago'
+				else:
+					create_msg = f'1 month, {str(week)} weeks and ' + str(day) + ' days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					create_msg = f'{str(month)} month ago'
+				elif day == 1:
+					create_msg = f'{str(month)} month and 1 day ago'
+				else:
+					create_msg = f'{str(month)} month and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = f'{month} month and 1 week ago'
+				elif day == 1:
+					create_msg = f'{month} month, 1 week and 1 day ago'
+				else:
+					create_msg = f'{month} month, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'{month} month and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					create_msg = f'{month} month and ' + str(week) + ' weeks and 1 day ago'
+				else:
+					create_msg = f'{month} month and ' + str(week) + f' weeks and {str(day)} days ago'
+					
+	elif year == 1:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					create_msg = '1 year ago'
+				elif day == 1:
+					create_msg = '1 year and 1 day ago'
+				else:
+					create_msg = f'1 year and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = '1 year and 1 week ago'
+				elif day == 1:
+					create_msg = '1 year, 1 week and 1 day ago'
+				else:
+					create_msg = f'1 year, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'1 year and {str(week)} weeks ago'
+				elif day == 1:
+					create_msg = f'1 year, {str(week)} weeks and 1 day ago'
+				else:
+					create_msg = f'1 year, {str(week)} weeks and ' + str(day) + ' days ago'
+					
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					create_msg = '1 year and 1 month ago'
+				elif day == 1:
+					create_msg = '1 year, 1 month and 1 day ago'
+				else:
+					create_msg = f'1 year, 1 month and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = '1 year, 1 month and 1 week ago'
+				elif day == 1:
+					create_msg = '1 year, 1 month, 1 week and 1 day ago'
+				else:
+					create_msg = f'1 year, 1 month, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'1 year, 1 month and {str(week)} weeks ago'
+				elif day == 1:
+					create_msg = f'1 year, 1 month, {str(week)} weeks and 1 day ago'
+				else:
+					create_msg = f'1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					create_msg = f'1 year and {str(month)} month ago'
+				elif day == 1:
+					create_msg = f'1 year, {str(month)} month and 1 day ago'
+				else:
+					create_msg = f'1 year, {str(month)} month and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = f'1 year, {str(month)} month and 1 week ago'
+				elif day == 1:
+					create_msg = f'1 year, {str(month)} month, 1 week and 1 day ago'
+				else:
+					create_msg = f'1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'1 year, {str(month)} month and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					create_msg = f'1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
+				else:
+					create_msg = f'1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
+	else:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					create_msg = f'{str(year)} years ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = f'{str(year)} years and 1 week ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, 1 week and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'{str(year)} years and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, ' + str(week) + ' weeks and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
+					
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					create_msg = f'{str(year)} years and 1 month ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, 1 month and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, 1 month and ' + str(day) + ' days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = f'{str(year)} years, 1 month and 1 week ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, 1 month, 1 week and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'{str(year)} years, 1 month and ' + str(week) + ' weeks ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					create_msg = f'{str(year)} years and ' + str(month) + ' month ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, ' +  str(month) + ' month and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					create_msg = f'{str(year)} years, ' + str(month) + ' month and 1 week ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
+					
+			else:
+				if day == 0:
+					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
+				elif day == 1:
+					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
+				else:
+					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'
+	
+	create_info = create_date + f' ({create_msg})'
+	
+	emb.add_field(name = "Created account", value = create_info, inline = False)
 	if member.top_role == member.roles[0]:
 		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
 	else:
