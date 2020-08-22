@@ -10,7 +10,7 @@ Bot = commands.Bot(command_prefix = '-')
 async def user(ctx, member: discord.Member):
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
-	value = str(member.joined_at)[:19]
+#	value = str(member.joined_at)[:19]
 	if str(member.joined_at)[8:10] == '01' or str(member.joined_at)[8:10] \
 	== '21' or str(member.joined_at)[8:10] == '31':
 		day = str(member.joined_at)[8:10] + 'st'
