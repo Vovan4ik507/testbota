@@ -54,46 +54,46 @@ async def user(ctx, member: discord.Member):
 		join_month = ' December '
 	join_date = join_day + join_month + str(member.joined_at)[2:4]
 	emb.add_field(name = "Joined servert", value = join_date, inline = False)
-	if str(member.joined_at)[8:10] == '01':
-		create_day = str(member.joined_at)[9:10] + 'st'
-	elif str(member.joined_at)[8:10] == '02':
-		create_day = str(member.joined_at)[9:10] + 'nd'
-	elif str(member.joined_at)[8:10] == '03':
-		create_day = str(member.joined_at)[9:10] + 'rd'
-	elif (str(member.joined_at)[8:10] == '04' or str(member.joined_at)[8:10] == '05' or str(member.joined_at)[8:10] == '06'
-	      or str(member.joined_at)[8:10] == '07' or str(member.joined_at)[8:10] == '08' or str(member.joined_at)[8:10] == '09'):
-		create_day = str(member.joined_at)[9:10] + 'th'
-	elif str(member.joined_at)[8:10] == '21' or str(member.joined_at)[8:10] == '31':
-		create_day = str(member.joined_at)[8:10] + 'st'
-	elif str(member.joined_at)[8:10] == '22':
-		create_day = str(member.joined_at)[8:10] + 'nd'
-	elif str(member.joined_at)[8:10] == '23':
-		create_day = str(member.joined_at)[8:10] + 'rd'
+	if str(member.created_at)[8:10] == '01':
+		create_day = str(member.created_at)[9:10] + 'st'
+	elif str(member.created_at)[8:10] == '02':
+		create_day = str(member.created_at)[9:10] + 'nd'
+	elif str(member.created_at)[8:10] == '03':
+		create_day = str(member.created_at)[9:10] + 'rd'
+	elif (str(member.created_at)[8:10] == '04' or str(member.created_at)[8:10] == '05' or str(member.created_at)[8:10] == '06'
+	      or str(member.created_at)[8:10] == '07' or str(member.created_at)[8:10] == '08' or str(member.created_at)[8:10] == '09'):
+		create_day = str(member.created_at)[9:10] + 'th'
+	elif str(member.created_at)[8:10] == '21' or str(member.created_at)[8:10] == '31':
+		create_day = str(member.created_at)[8:10] + 'st'
+	elif str(member.created_at)[8:10] == '22':
+		create_day = str(member.created_at)[8:10] + 'nd'
+	elif str(member.created_at)[8:10] == '23':
+		create_day = str(member.created_at)[8:10] + 'rd'
 	else:
-		create_day = str(member.joined_at)[8:10] + 'th'
-	if str(member.joined_at)[5:7] == '01':
+		create_day = str(member.created_at)[8:10] + 'th'
+	if str(member.created_at)[5:7] == '01':
 		create_month = ' February '
-	elif str(member.joined_at)[5:7] == '02':
+	elif str(member.created_at)[5:7] == '02':
 		create_month = ' January '
-	elif str(member.joined_at)[5:7] == '03':
+	elif str(member.created_at)[5:7] == '03':
 		create_month = ' March '
-	elif str(member.joined_at)[5:7] == '04':
+	elif str(member.created_at)[5:7] == '04':
 		create_month = ' April '
-	elif str(member.joined_at)[5:7] == '05':
+	elif str(member.created_at)[5:7] == '05':
 		create_month = ' May '
-	elif str(member.joined_at)[5:7] == '06':
+	elif str(member.created_at)[5:7] == '06':
 		create_month = ' June '
-	elif str(member.joined_at)[5:7] == '07':
+	elif str(member.created_at)[5:7] == '07':
 		create_month = ' July '
-	elif str(member.joined_at)[5:7] == '08':
+	elif str(member.created_at)[5:7] == '08':
 		create_month = ' August '
-	elif str(member.joined_at)[5:7] == '09':
+	elif str(member.created_at)[5:7] == '09':
 		create_month = ' September '
-	elif str(member.joined_at)[5:7] == '10':
+	elif str(member.created_at)[5:7] == '10':
 		create_month = ' October '
-	elif str(member.joined_at)[5:7] == '11':
+	elif str(member.created_at)[5:7] == '11':
 		create_month = ' November '
-	elif str(member.joined_at)[5:7] == '12':
+	elif str(member.created_at)[5:7] == '12':
 		create_month = ' December '
 	create_date = create_day + create_month + str(member.created_at)[2:4]
 	emb.add_field(name = "Created account", value = create_date, inline = False)
