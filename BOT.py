@@ -5,7 +5,7 @@ import os
 import time
 
 Bot = commands.Bot(command_prefix = '-')
-#	value = str(member.joined_at)[:19]
+#value = str(member.joined_at)[:19]
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
