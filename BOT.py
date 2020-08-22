@@ -369,7 +369,8 @@ async def user(ctx, member: discord.Member):
 		month = now_time_month - joined_time_month
 	
 	while day > 7:
-		week = day // 7
+		if day // 7 :
+		week += 1
 		day -= 7
 	
 	year = now_time_year - joined_time_year
@@ -602,7 +603,7 @@ async def user(ctx, member: discord.Member):
 	
 	join_info = join_date + f'({join_msg})'
 	
-	emb.add_field(name = "Joined server", value = join_date, inline = False)
+	emb.add_field(name = "Joined server", value = join_info, inline = False)
 	
 	if str(member.created_at)[8:10] == '01':
 		create_day = str(member.created_at)[9:10] + 'st'
