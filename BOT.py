@@ -9,7 +9,8 @@ Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
 async def now(ctx):
-	await ctx.send(datetime.datetime.year)
+	now_time = time.time()
+	await ctx.send(now_time)
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
