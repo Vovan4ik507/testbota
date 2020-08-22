@@ -8,7 +8,7 @@ import time
 Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
-async def now-time(ctx):
+async def now(ctx):
 	await ctx.send(datetime.datetime.year)
 
 @Bot.command()
