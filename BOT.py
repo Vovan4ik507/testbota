@@ -284,7 +284,7 @@ async def joined(ctx, member: discord.Member):
 					msg = f'You joined to this server {str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'	
 	await ctx.send(msg)
 	
-	@Bot.command()
+@Bot.command()
 async def created(ctx, member: discord.Member):
 	now_time_year = str(datetime.date.today())[0:4]
 	now_time_year = int(now_time_year)
