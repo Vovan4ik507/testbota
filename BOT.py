@@ -9,10 +9,10 @@ Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
 async def user(ctx, member: discord.Member):
-#	if str(member.joined_at)[8:10] == '01' or str(member.joined_at)[8:10] == '21' or str(member.joined_at)[8:10] == '31':
-#		date = str(member.joined_at)[8:10] + 'st'
-#	else:
-#		date = str(member.joined_at)[8:10]
+	if str(member.joined_at)[8:10] == '01' or str(member.joined_at)[8:10] == '21' or str(member.joined_at)[8:10] == '31':
+		date = str(member.joined_at)[8:10] + 'st'
+	else:
+		date = str(member.joined_at)[8:10]
     	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
     	emb.add_field(name = "ID", value = member.id, inline = False)
     	emb.add_field(name = "Joined server at", value = str(member.joined_at)[8:10], inline = False)
