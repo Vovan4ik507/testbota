@@ -16,12 +16,12 @@ async def now(ctx):
 async def joined(ctx, member: discord.Member):
 	now_time_year = str(datetime.date.today())[0:4]
 	now_time_year = int(now_time_year)
-	joined_time_year = str(member.created_at)[0:4]
+	joined_time_year = str(member.joined_at)[0:4]
 	joined_time_year = int(joined_time_year)
 	
 	now_time_month = str(datetime.date.today())[5:7]
 	now_time_month = int(now_time_month)
-	joined_time_month = str(member.created_at)[5:7]
+	joined_time_month = str(member.joined_at)[5:7]
 	joined_time_month = int(joined_time_month)
 	
 	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
@@ -34,7 +34,7 @@ async def joined(ctx, member: discord.Member):
 	
 	now_time_day = str(datetime.date.today())[8:10]
 	now_time_day = int(now_time_day)
-	joined_time_day = str(member.created_at)[8:10]
+	joined_time_day = str(member.joined_at)[8:10]
 	joined_time_day = int(joined_time_day)
 	week = 0
 	
