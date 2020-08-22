@@ -115,7 +115,7 @@ async def joined(ctx, member: discord.Member):
 				elif day == 1:
 					join_msg = f'Joined to this server {str(month)} month and 1 day ago'
 				else:
-					join_msg = f'Joined to this server {str(month)} and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server {str(month)} month and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
@@ -191,7 +191,7 @@ async def joined(ctx, member: discord.Member):
 				elif day == 1:
 					join_msg = f'Joined to this server 1 year, {str(month)} month and 1 day ago'
 				else:
-					join_msg = f'Joined to this server 1 year, {str(month)} and ' + str(day) + ' days ago'
+					join_msg = f'Joined to this server 1 year, {str(month)} month and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
@@ -266,7 +266,7 @@ async def joined(ctx, member: discord.Member):
 				elif day == 1:
 					join_msg = f'Joined to this server {str(year)} years, ' +  str(month) + ' month and 1 day ago'
 				else:
-					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' and {str(day)} days ago'
+					join_msg = f'Joined to this server {str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
@@ -388,7 +388,7 @@ async def created(ctx, member: discord.Member):
 				elif day == 1:
 					msg = f'Account created {str(month)} month and 1 day ago'
 				else:
-					msg = f'Account created {str(month)} and ' + str(day) + ' days ago'
+					msg = f'Account created {str(month)} month and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
@@ -464,7 +464,7 @@ async def created(ctx, member: discord.Member):
 				elif day == 1:
 					msg = f'Account created 1 year, {str(month)} month and 1 day ago'
 				else:
-					msg = f'Account created 1 year, {str(month)} and ' + str(day) + ' days ago'
+					msg = f'Account created 1 year, {str(month)} month and ' + str(day) + ' days ago'
 					
 			elif week == 1:
 				if day == 0:
@@ -539,7 +539,7 @@ async def created(ctx, member: discord.Member):
 				elif day == 1:
 					msg = f'Account created {str(year)} years, ' +  str(month) + ' month and 1 day ago'
 				else:
-					msg = f'Account created {str(year)} years, ' + str(month) + f' and {str(day)} days ago'
+					msg = f'Account created {str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
 					
 			elif week == 1:
 				if day == 0:
