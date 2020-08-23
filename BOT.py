@@ -655,7 +655,7 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
 	for i in range(1, len(member.roles)):
 		if i == 1:
-			mention += member.roles[i].mention
+			mention = member.roles[i].mention
 		else:
 			mention += ', '
 			mention += member.roles[i].mention
