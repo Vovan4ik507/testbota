@@ -45,7 +45,7 @@ async def user(ctx, member = None):
 	else:
 		if member_stop == False:
 			if member == None:
-				member = guild.me
+				member = ctx.author
 			else:
 				await ctx.send('You wrote member index incorectly')
 	
