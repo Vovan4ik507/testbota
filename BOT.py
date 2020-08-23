@@ -32,7 +32,23 @@ async def say(ctx, channel = None, *, word = None):
 						await ctx.send(channel + f' {word}')
 	
 @Bot.command()
-async def user(ctx, member: discord.Member):
+async def user(ctx, member = None):
+	
+	guild = ctx.guild
+	member_list = guild.members
+	member_stop = False
+	
+	for i in range(0, len(member_list)):
+		if member == member_list[i].name or member == member_list[i].id or member == member_list[i].mention:
+			member_stop = True
+			member = member_list[i]
+	else:
+		if member_stop == False:
+			if member == None:
+				member = guild.me
+			else:
+				await ctx.send('You wrote member index incorectly')
+	
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	
