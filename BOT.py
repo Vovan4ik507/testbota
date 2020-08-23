@@ -95,10 +95,9 @@ async def user(ctx, member: discord.Member):
 	else:
 		month = now_time_month - joined_time_month
 	
-	while day > 7:
-		if day // 7 :
-			week += 1
-			day -= 7
+	while day // 7:
+		week += 1
+		day -= 7
 	
 	year = now_time_year - joined_time_year
 	
@@ -415,10 +414,9 @@ async def user(ctx, member: discord.Member):
 	else:
 		month = now_time_month - created_time_month
 	
-	while day > 7:
-		if day // 7 :
-			week += 1
-			day -= 7
+	while day // 7:
+		week += 1
+		day -= 7
 	
 	year = now_time_year - created_time_year
 	
