@@ -653,12 +653,15 @@ async def user(ctx, member: discord.Member):
 		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
 	else:
 		emb.add_field(name = "Highest role", value = member.top_role.mention, inline = False)
-	for i in range(1, len(member.roles)):
-		if i == 1:
-			mention = member.roles[i].mention
-		else:
-			mention += ', '
-			mention += member.roles[i].mention
+	if len(member.roles) >= 2:
+		for i in range(1, len(member.roles)):
+			if i == 1:
+				mention = member.roles[i].mention
+			else:
+				mention += ', '
+				mention += member.roles[i].mention
+	else:
+		mention = 'You don\'t have any roles.'
 	emb.add_field(name = "Roles", value = mention, inline = False)
 	emb.set_thumbnail(url = member.avatar_url)
 	emb.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
