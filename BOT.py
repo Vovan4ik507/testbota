@@ -6,6 +6,14 @@ import datetime
 import time
 
 Bot = commands.Bot(command_prefix = '-')
+
+@Bot.command()
+async def emoji(ctx, emoji:discord.Emoji):
+	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
+	e_e.set_image(url = emoji.url)
+	e_e.set_footer(text = 'ID: ' + str(emoji.id))
+	await ctx.channel.purge(limit = 1)
+	await ctx.send(embed = e_e)
 	
 @Bot.command()
 async def ping(ctx):
@@ -14,11 +22,11 @@ async def ping(ctx):
 	await channel.trigger_typing()
 	t2 = time.perf_counter()
 	latency = round(Bot.latency *1000)
-	t = round((t2-t1)*1000)
+	t = round((t2 - t1) * 1000)
 	green = discord.Color.green()
 	desc=f":heartbeat: **{latency}**ms \n :stopwatch: **{t}**ms"
-	em = discord.Embed(title = ":ping_pong: Pong",description = desc, color = green)
-	em.set_footer(text = f"Requested by {ctx.author.name}",icon_url=ctx.author.avatar_url)
+	em = discord.Embed(title = ":ping_pong: Pong", description = desc, color = green)
+	em.set_footer(text = f"Requested by {ctx.author.name}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = em)
 	
 @Bot.command()
