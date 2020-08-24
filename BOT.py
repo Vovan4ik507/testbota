@@ -44,6 +44,40 @@ async def say(ctx, channel = None, *, word = None):
 						await ctx.send(channel)
 					else:
 						await ctx.send(channel + f' {word}')
+						
+@Bot.command()
+async def clean(ctx, channel = None, msgs = None):
+		
+	if channel == None:
+		await ctx.send('These command need argument')
+	else:
+		stop = False
+		guild = ctx.guild
+		channel_list = guild.text_channels
+		for i in range(0, len(channel_list)):
+			if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
+				if msgs == None:
+					stop = True
+					await ctx.send('You don\'t wrote how many messages I need to delete.')
+				else:
+					stop = True
+					channel = channel_list[i]
+					deleted = await channel.purge(limit = int(msgs))
+					if len(deleted) == 1:
+						await channel.purge(limit = 1)
+						await channel.send(f'Deleted {len(deleted)} message')
+					else:
+						await channel.purge(limit = 1)
+						await channel.send(f'Deleted {len(deleted)} messages')
+		else:
+			if stop == False:
+				deleted = await ctx.channel.purge(limit = int(channel))
+				if len(deleted) == 1:
+					await ctx.channel.purge(limit = 1)
+					await ctx.send(f'Deleted {len(deleted)} message')
+				else:
+					await ctx.channel.purge(limit = 1)
+					await ctx.send(f'Deleted {len(deleted)} messages')
 	
 @Bot.command()
 async def user(ctx, member = None):
