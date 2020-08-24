@@ -40,12 +40,12 @@ async def user(ctx, member = None):
 	mention1 = ''
 	mention2 = ''
 	mention_list = []
-	number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+	number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 	
 	for i in range(0, len(member_list)):
 		mention1= member_list[i].mention
 		if mention1[i] == '@' and mention1[i + 1] in number:
-			mention2 = mention1[0:i] + '!' + mention1[i + 1: len(mention1)]
+			mention2 = mention1[0:i + 1] + '!' + mention1[i + 1: len(mention1)]
 			await ctx.send(mention2)
 			mention_list.append(mention2)
 		else:
