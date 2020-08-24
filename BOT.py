@@ -37,9 +37,20 @@ async def user(ctx, member = None):
 	guild = ctx.guild
 	member_list = guild.members
 	member_stop = False
+	mention = ''
+	mention_list = []
+	number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 	
 	for i in range(0, len(member_list)):
-		if member == member_list[i].name or member == str(member_list[i].id) or member == str(member_list[i].mention):
+		if member_list[i].mention == '@' and member[i + 1] in number:
+			mention += member_list[i].mention
+			mention.insert(i + 1, '!')
+			mention_list += mention
+		else:
+			mention_list += member_list[i].mention
+	
+	for i in range(0, len(member_list)):
+		if member == member_list[i].name or member == str(member_list[i].id) or member == mention_list[i]:
 			member_stop = True
 			member = member_list[i]
 		else:
