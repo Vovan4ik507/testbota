@@ -463,7 +463,7 @@ async def user(ctx, member = None):
 	else:
 		day = now_time_day - created_time_day
 	
-	if now_time_month < joined_time_month:
+	if now_time_month < created_time_month:
 		now_time_year -= 1
 		now_time_month += 12
 		month = now_time_month - created_time_month
