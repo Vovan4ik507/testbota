@@ -41,7 +41,6 @@ async def user(ctx, member = None):
 	mention2 = ''
 	mention_list = []
 	stop = 0
-	number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 	
 	for i in range(0, len(member_list)):
 		mention1= member_list[i].mention
@@ -49,7 +48,7 @@ async def user(ctx, member = None):
 			mention_list.append(mention1)
 		else:
 			mention2 = mention1[0:2] + '!' + mention1[3: len(mention1)]
-			mention_list.append(mention1[0:stop])	
+			mention_list.append(mention1)	
 	
 	for i in range(0, len(member_list)):
 		if member == member_list[i].name or member == str(member_list[i].id) or member == mention_list[i]:
