@@ -51,7 +51,7 @@ async def user(ctx, member = None):
 			if mention1[i] == '@':
 				stop = i
 			mention2 = mention1[0:stop] + '!' + mention1[stop + 1: len(mention1)]
-			mention_list.append(mention2)	
+			mention_list.append(mention1[0:stop])	
 	
 	for i in range(0, len(member_list)):
 		if member == member_list[i].name or member == str(member_list[i].id) or member == mention_list[i]:
