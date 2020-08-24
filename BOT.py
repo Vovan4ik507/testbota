@@ -40,7 +40,6 @@ async def user(ctx, member = None):
 	mention1 = ''
 	mention2 = ''
 	mention_list = []
-	stop = 0
 	
 	author_mention = str(member)
 	if author_mention[1] == '@' and author_mention[2] != '!':
@@ -59,8 +58,6 @@ async def user(ctx, member = None):
 		if member == member_list[i].name or member == str(member_list[i].id) or member == mention_list[i]:
 			member_stop = True
 			member = member_list[i]
-		else:
-			await ctx.send(f'{member_list[i].name}, {member_list[i].id}, `{mention_list[i]}`')
 	else:
 		if member_stop == False:
 			if member == None:
