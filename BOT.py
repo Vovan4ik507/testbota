@@ -43,7 +43,7 @@ async def user(ctx, member = None):
 			member_stop = True
 			member = member_list[i]
 		else:
-			await ctx.send(f'{member_list[i].name}, {member_list[i].id}, {member_list[i].mention})
+			await ctx.send(f'{member_list[i].name}, {member_list[i].id}, {member_list[i].mention}')
 	else:
 		if member_stop == False:
 			if member == None:
