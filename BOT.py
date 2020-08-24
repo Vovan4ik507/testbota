@@ -44,7 +44,7 @@ async def user(ctx, member = None):
 	
 	for i in range(0, len(member_list)):
 		mention1 = member_list[i].mention
-		if mention1[3] == '@' and mention1[4] == '!':
+		if mention1[2] == '@' and mention1[3] == '!':
 			mention_list.append(mention1)
 		else:
 			mention2 = mention1[0 : 2] + '!' + mention1[2 : len(mention1)]
