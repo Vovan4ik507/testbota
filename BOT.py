@@ -42,7 +42,7 @@ async def user(ctx, member = None):
 	number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 	
 	for i in range(0, len(member_list)):
-		if member_list[i].mention == '@' and member[i + 1] in number:
+		if member_list[i].mention == '@' and member_list[i + 1].mention in number:
 			mention += member_list[i].mention
 			mention.insert(i + 1, '!')
 			mention_list += mention
@@ -54,7 +54,7 @@ async def user(ctx, member = None):
 			member_stop = True
 			member = member_list[i]
 		else:
-			await ctx.send(f'{member_list[i].name}, {member_list[i].id}, `{member_list[i].mention}`')
+			await ctx.send(f'{member_list[i].name}, {member_list[i].id}, `{mention_list[i]}`')
 	else:
 		if member_stop == False:
 			if member == None:
