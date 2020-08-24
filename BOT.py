@@ -49,7 +49,7 @@ async def user(ctx, member = None):
 			if member == None:
 				member = ctx.author
 			else:
-				await ctx.send(f'You wrote member index incorectly, {member}')
+				await ctx.send(f'You wrote member index incorectly, `{member}`')
 	
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
