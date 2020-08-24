@@ -44,7 +44,9 @@ async def user(ctx, member = None):
 	for i in range(0, len(member_list)):
 		if member_list[i].mention == '@' and member_list[i + 1].mention in number:
 			mention += member_list[i].mention
+			await cxt.send(mention)
 			mention.insert(i + 1, '!')
+			await ctx.send(mention)
 			mention_list.append(mention)
 		else:
 			mention_list.append(member_list[i].mention)
