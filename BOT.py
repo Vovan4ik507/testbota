@@ -9,10 +9,11 @@ Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
-	e_e = discord.Embed(title = emoji.name, color = discord.Color.green())
+	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.green())
 	e_e.set_image(url = emoji.url)
-	e_e.set_footer(text = 'ID: ' + str(emoji.id))
-	await ctx.channel.purge(limit = 1)
+	e_e.add_field(name = 'ID', value = emoji.id)
+	e_e.add_field(name = 'Name', value = emoji.name)
+	e_e.set_footer(text = f'Caused by: {str(ctx.author)}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = e_e)
 	
 @Bot.command()
