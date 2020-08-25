@@ -119,7 +119,7 @@ async def user(ctx, member = None):
 			if member == None:
 				member = ctx.author
 			else:
-				await ctx.send(f'You wrote member index incorectly, `{member}`')
+				await ctx.send(f'You wrote member index incorectly.')
 	
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
@@ -791,7 +791,7 @@ async def server(ctx):
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
 	for i in range(0, len(server.members)):
-		if server.members[i].status == discord.Status.online:
+		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
 			if server.members[i].bot == False:
 				online_members += 1
 		elif server.members[i].status == discord.Status.idle:
