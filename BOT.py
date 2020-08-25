@@ -531,6 +531,139 @@ async def server(ctx):
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
 	
+@Bot.command()
+async def channel(ctx, channel = None):
+	
+	guild = ctx.guild
+	role_list = guild.roles
+	r_roles_quantity = 0
+	r_roles_msg = ''
+	read_list = []
+	w_roles_quantity = 0
+	w_roles_msg = ''
+	h_roles_quantity = 0
+	h_roles_msg = ''
+	channel_list = guild.text_channels
+	channel_stop = False
+	
+	for i in range(0, len(channel_list)):
+		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i].mention:
+			channel_stop = True
+			channel = channel_list[i]
+	else:
+		if channel_stop == False:
+			if channel == None:	
+				channel = ctx.channel
+			else:
+				await ctx.send('You wrote channel index incorectly.')
+	
+	for i in range(0, len(role_list)):
+		if channel.overwrites_for(role_list[0]).read_messages == False:
+			if role_list[i].permissions.read_messages == True:
+				if (channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True
+				    or channel.overwrites_for(role_list[i]).read_messages == None):
+					r_roles_quantity += 1
+					r_roles_msg += role_list[i].mention
+					r_roles_msg += ', '
+					read_list.append(role_list[i])
+			else:
+				if channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True:
+					r_roles_quantity += 1
+					r_roles_msg += role_list[i].mention
+					r_roles_msg += ', '
+					read_list.append(role_list[i])
+		else:
+			if role_list[i].permissions.read_messages == True:
+				if channel.overwrites_for(role_list[i]).read_messages != False:
+					r_roles_quantity += 1
+					r_roles_msg += role_list[i].mention
+					r_roles_msg += ', '
+					read_list.append(role_list[i])
+			else:
+				if channel.overwrites_for(role_list[i]).read_messages == True:
+					r_roles_quantity += 1
+					r_roles_msg += role_list[i].mention
+					r_roles_msg += ', '
+					read_list.append(role_list[i])
+	else:
+		r_roles_msg = r_roles_msg[0: len(r_roles_msg) - 2]
+		
+	for i in range(0, len(role_list)):
+		if role_list[i] in read_list:
+			if channel.overwrites_for(role_list[0]).send_messages == False:
+				if role_list[i].permissions.send_messages == True:
+					if (channel.overwrites_for(role_list[i]).send_messages == True or role_list[i].permissions.administrator == True
+					    or channel.overwrites_for(role_list[i]).send_messages == None):
+						w_roles_quantity += 1
+						w_roles_msg += role_list[i].mention
+						w_roles_msg += ', '
+				else:
+					if channel.overwrites_for(role_list[i]).send_messages == True or role_list[i].permissions.administrator == True:
+						w_roles_quantity += 1
+						w_roles_msg += role_list[i].mention
+						w_roles_msg += ', '
+			else:
+				if role_list[i].permissions.send_messages == True:
+					if channel.overwrites_for(role_list[i]).send_messages != False:
+						w_roles_quantity += 1
+						w_roles_msg += role_list[i].mention
+						w_roles_msg += ', '
+				else:
+					if channel.overwrites_for(role_list[i]).send_messages == True:
+						w_roles_quantity += 1
+						w_roles_msg += role_list[i].mention
+						w_roles_msg += ', '
+	else:
+		w_roles_msg = w_roles_msg[0: len(w_roles_msg) - 2]
+		
+	for i in range(0, len(role_list)):
+		if role_list[i] in read_list:
+			if channel.overwrites_for(role_list[0]).send_messages == False:
+				if role_list[i].permissions.read_message_history == True:
+					if (channel.overwrites_for(role_list[i]).read_message_history == True or role_list[i].permissions.administrator == True
+					    or channel.overwrites_for(role_list[i]).read_message_history == None):
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+				else:
+					if channel.overwrites_for(role_list[i]).read_message_history == True or role_list[i].permissions.administrator == True:
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+			else:
+				if role_list[i].permissions.send_messages == True:
+					if channel.overwrites_for(role_list[i]).read_message_history != False:
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+				else:
+					if channel.overwrites_for(role_list[i]).read_message_history == True:
+						h_roles_quantity += 1
+						h_roles_msg += role_list[i].mention
+						h_roles_msg += ', '
+	else:
+		h_roles_msg = h_roles_msg[0: len(h_roles_msg) - 2]
+	
+	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
+	c_e.add_field(name = 'Name', value = channel.name)
+	c_e.add_field(name = 'ID', value = channel.id)
+	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
+	if channel.category != None:
+		c_e.add_field(name = 'Category', value = channel.category)
+	if channel.is_nsfw() == True:
+		c_e.add_field(name = 'NSFW', value = 'Yes')
+	else:
+		c_e.add_field(name = 'NSFW', value = 'No')
+	if channel.topic != None:
+		c_e.add_field(name = 'Topic', value = channel.topic, inline = False)
+	role = ctx.author.roles[0]
+	c_e.add_field(name = f'Roles that can view this channel ({r_roles_quantity})', value = r_roles_msg, inline = False)
+	c_e.add_field(name = f'Roles that can write in this channel ({w_roles_quantity})', value = w_roles_msg, inline = False)
+	c_e.add_field(name = f'Roles that can read this channel ({h_roles_quantity})', value = h_roles_msg, inline = False)
+	c_e.add_field(name = 'Created at', value = calculator(channel.created_at), inline = False)
+	c_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
+	await ctx.send(embed = c_e)
+	
 @Bot.event
 async def on_ready():
 	print('Bot is online')
