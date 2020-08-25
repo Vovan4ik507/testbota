@@ -560,8 +560,7 @@ async def channel(ctx, channel = None):
 	for i in range(0, len(role_list)):
 		if channel.overwrites_for(role_list[0]).read_messages == False:
 			if role_list[i].permissions.read_messages == True:
-				if (channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True
-				    or channel.overwrites_for(role_list[i]).read_messages == None):
+				if channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True:
 					r_roles_quantity += 1
 					r_roles_msg += role_list[i].mention
 					r_roles_msg += ', '
