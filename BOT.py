@@ -87,7 +87,323 @@ async def clean(ctx, channel = None, msgs = None):
 				else:
 					await ctx.channel.purge(limit = 1)
 					await ctx.send(f'Deleted {len(deleted)} messages')
+
+def calculator(num):
 	
+	num = str(num)
+	
+	if num[8:10] == '01':
+		day = num[8:10] + 'st'
+	elif num[8:10] == '02':
+		day = num[8:10] + 'nd'
+	elif num[8:10] == '03':
+		day = num[8:10] + 'rd'
+	elif num[8:10] == '04' or num[8:10] == '05' or num[8:10] == '06' or num[8:10] == '07' or num[8:10] == '08' or num[8:10] == '09':
+		day = num[8:10] + 'th'
+	elif num[8:10] == '21' or num[8:10] == '31':
+		day = num[8:10] + 'st'
+	elif num[8:10] == '22':
+		day = num[8:10] + 'nd'
+	elif num[8:10] == '23':
+		day = num[8:10] + 'rd'
+	else:
+		day = num[8:10] + 'th'
+		
+	if num[5:7] == '01':
+		month = ' February '
+	elif num[5:7] == '02':
+		month = ' January '
+	elif num[5:7] == '03':
+		month = ' March '
+	elif num[5:7] == '04':
+		month = ' April '
+	elif num[5:7] == '05':
+		month = ' May '
+	elif num[5:7] == '06':
+		month = ' June '
+	elif num[5:7] == '07':
+		month = ' July '
+	elif num[5:7] == '08':
+		month = ' August '
+	elif num[5:7] == '09':
+		month = ' September '
+	elif num[5:7] == '10':
+		month = ' October '
+	elif num[5:7] == '11':
+		month = ' November '
+	elif num[5:7] == '12':
+		month = ' December '
+		
+	date = day + month + f'{num[2:4]} '
+	
+	now_year = int(str(datetime.date.today())[0:4])
+	year = int(num[0:4])
+
+	
+	now_month = int(str(datetime.date.today())[5:7])
+	month = int(num[5:7])
+	
+	if now_month == 1 or now_month == 3 or now_month == 5 or now_month == 7 or now_month == 8 or now_month == 10 or now_month == 12:
+		day_bonus = 31
+	elif now_month == 2:
+		day_bonus = 28
+	else:
+		day_bonus = 30
+	
+	now_day = int(str(datetime.date.today())[8:10])
+	day = int(num[8:10])
+	week = 0
+	
+	if now_day < day:
+		now_month -= 1
+		now_day += day_bonus
+		day = now_day - day
+	else:
+		day = now_day - day
+	
+	if now_month < month:
+		now_year -= 1
+		now_month += 12
+		month = now_month - month
+	else:
+		month = now_month - month
+	
+	while day // 7:
+		week += 1
+		day -= 7
+	
+	year = now_year - year
+	
+	if year == 0:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					msg = 'Today'
+				elif day == 1:
+					msg = '1 day ago'
+				else:
+					msg = f'{day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = '1 week ago'
+				elif day == 1:
+					msg = '1 week and 1 day ago'
+				else:
+					msg = f'1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'{week} weeks ago'
+				elif day == 1:
+					msg = f'{week} weeks and 1 day ago'
+				else:
+					msg = f'{week} weeks and {day} days ago'
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					msg = '1 month ago'
+				elif day == 1:
+					msg = '1 month and 1 day ago'
+				else:
+					msg = f'1 month and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = '1 month and 1 week ago'
+				elif day == 1:
+					msg = '1 month, 1 week and 1 day ago'
+				else:
+					msg = f'1 month, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'1 month {week} weeks ago'
+				elif day == 1:
+					msg = f'1 month, {week} weeks and 1 day ago'
+				else:
+					msg = f'1 month, {week} weeks and {day} days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					msg = f'{month} month ago'
+				elif day == 1:
+					msg = f'{month} month and 1 day ago'
+				else:
+					msg = f'{month} month and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = f'{month} month and 1 week ago'
+				elif day == 1:
+					msg = f'{month} month, 1 week and 1 day ago'
+				else:
+					msg = f'{month} month, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'{month} month and {week} weeks ago'
+				elif day == 1:
+					msg = f'{month} month and {week} weeks and 1 day ago'
+				else:
+					msg = f'{month} month and {week} weeks and {day} days ago'
+					
+	elif year == 1:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					msg = '1 year ago'
+				elif day == 1:
+					msg = '1 year and 1 day ago'
+				else:
+					msg = f'1 year and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = '1 year and 1 week ago'
+				elif day == 1:
+					msg = '1 year, 1 week and 1 day ago'
+				else:
+					msg = f'1 year, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'1 year and {week} weeks ago'
+				elif day == 1:
+					msg = f'1 year, {week} weeks and 1 day ago'
+				else:
+					msg = f'1 year, {week} weeks and {day} days ago'
+					
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					msg = '1 year and 1 month ago'
+				elif day == 1:
+					msg = '1 year, 1 month and 1 day ago'
+				else:
+					msg = f'1 year, 1 month and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = '1 year, 1 month and 1 week ago'
+				elif day == 1:
+					msg = '1 year, 1 month, 1 week and 1 day ago'
+				else:
+					msg = f'1 year, 1 month, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'1 year, 1 month and {week} weeks ago'
+				elif day == 1:
+					msg = f'1 year, 1 month, {week} weeks and 1 day ago'
+				else:
+					msg = f'1 year, 1 month, {week} weeks and {day} days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					msg = f'1 year and {month} month ago'
+				elif day == 1:
+					msg = f'1 year, {month} month and 1 day ago'
+				else:
+					msg = f'1 year, {month} month and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = f'1 year, {month} month and 1 week ago'
+				elif day == 1:
+					msg = f'1 year, {month} month, 1 week and 1 day ago'
+				else:
+					msg = f'1 year, {month} month, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'1 year, {month} month and {week} weeks ago'
+				elif day == 1:
+					msg = f'1 year, {month} month, {week} weeks and 1 day ago'
+				else:
+					msg = f'1 year, {month} month, {week} weeks and {day} days ago'
+	else:
+		if month == 0:
+			if week == 0:
+				if day == 0:
+					msg = f'{year} years ago'
+				elif day == 1:
+					msg = f'{year} years and 1 day ago'
+				else:
+					msg = f'{year} years and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = f'{year} years and 1 week ago'
+				elif day == 1:
+					msg = f'{year} years, 1 week and 1 day ago'
+				else:
+					msg = f'{year} years, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'{year} years and {week} weeks ago'
+				elif day == 1:
+					msg = f'{year} years, {week} weeks and 1 day ago'
+				else:
+					msg = f'{year} years, {week} weeks and {day} days ago'
+					
+		elif month == 1:
+			if week == 0:
+				if day == 0:
+					msg = f'{year} years and 1 month ago'
+				elif day == 1:
+					msg = f'{year} years, 1 month and 1 day ago'
+				else:
+					msg = f'{year} years, 1 month and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = f'{year} years, 1 month and 1 week ago'
+				elif day == 1:
+					msg = f'{year} years, 1 month, 1 week and 1 day ago'
+				else:
+					msg = f'{year} years, 1 month, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'{year} years, 1 month and {week} weeks ago'
+				elif day == 1:
+					msg = f'{year} years, 1 month, {week} weeks and 1 day ago'
+				else:
+					msg = f'{year} years, 1 month, {week} weeks and {day} days ago'
+					
+		else:
+			if week == 0:
+				if day == 0:
+					msg = f'{year} years and {month} month ago'
+				elif day == 1:
+					msg = f'{year} years, {month} month and 1 day ago'
+				else:
+					msg = f'{year} years, {month} month and {day} days ago'
+					
+			elif week == 1:
+				if day == 0:
+					msg = f'{year} years, {month} month and 1 week ago'
+				elif day == 1:
+					msg = f'{year} years, {month} month, 1 week and 1 day ago'
+				else:
+					msg = f'{year} years, {month} month, 1 week and {day} days ago'
+					
+			else:
+				if day == 0:
+					msg = f'{year} years, {month} month and {week} weeks ago'
+				elif day == 1:
+					msg = f'{year} years, {month} month and {week} weeks and 1 day ago'
+				else:
+					msg = f'{year} years, {month} month and {week} weeks and {day} days ago'
+	
+	info = date + f'({msg})'
+	
+	return info
+
 @Bot.command()
 async def user(ctx, member = None):
 	
@@ -124,644 +440,8 @@ async def user(ctx, member = None):
 	
 	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
-	
-	if str(member.joined_at)[8:10] == '01':
-		join_day = str(member.joined_at)[9:10] + 'st'
-	elif str(member.joined_at)[8:10] == '02':
-		join_day = str(member.joined_at)[9:10] + 'nd'
-	elif str(member.joined_at)[8:10] == '03':
-		join_day = str(member.joined_at)[9:10] + 'rd'
-	elif (str(member.joined_at)[8:10] == '04' or str(member.joined_at)[8:10] == '05' or str(member.joined_at)[8:10] == '06'
-	      or str(member.joined_at)[8:10] == '07' or str(member.joined_at)[8:10] == '08' or str(member.joined_at)[8:10] == '09'):
-		join_day = str(member.joined_at)[9:10] + 'th'
-	elif str(member.joined_at)[8:10] == '21' or str(member.joined_at)[8:10] == '31':
-		join_day = str(member.joined_at)[8:10] + 'st'
-	elif str(member.joined_at)[8:10] == '22':
-		join_day = str(member.joined_at)[8:10] + 'nd'
-	elif str(member.joined_at)[8:10] == '23':
-		join_day = str(member.joined_at)[8:10] + 'rd'
-	else:
-		join_day = str(member.joined_at)[8:10] + 'th'
-		
-	if str(member.joined_at)[5:7] == '01':
-		join_month = ' February '
-	elif str(member.joined_at)[5:7] == '02':
-		join_month = ' January '
-	elif str(member.joined_at)[5:7] == '03':
-		join_month = ' March '
-	elif str(member.joined_at)[5:7] == '04':
-		join_month = ' April '
-	elif str(member.joined_at)[5:7] == '05':
-		join_month = ' May '
-	elif str(member.joined_at)[5:7] == '06':
-		join_month = ' June '
-	elif str(member.joined_at)[5:7] == '07':
-		join_month = ' July '
-	elif str(member.joined_at)[5:7] == '08':
-		join_month = ' August '
-	elif str(member.joined_at)[5:7] == '09':
-		join_month = ' September '
-	elif str(member.joined_at)[5:7] == '10':
-		join_month = ' October '
-	elif str(member.joined_at)[5:7] == '11':
-		join_month = ' November '
-	elif str(member.joined_at)[5:7] == '12':
-		join_month = ' December '
-		
-	join_date = join_day + join_month + str(member.joined_at)[2:4]
-	
-	now_time_year = str(datetime.date.today())[0:4]
-	now_time_year = int(now_time_year)
-	joined_time_year = str(member.joined_at)[0:4]
-	joined_time_year = int(joined_time_year)
-	
-	now_time_month = str(datetime.date.today())[5:7]
-	now_time_month = int(now_time_month)
-	joined_time_month = str(member.joined_at)[5:7]
-	joined_time_month = int(joined_time_month)
-	
-	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
-	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
-		day_bonus = 31
-	elif now_time_month == 2:
-		day_bonus = 28
-	else:
-		day_bonus = 30
-	
-	now_time_day = str(datetime.date.today())[8:10]
-	now_time_day = int(now_time_day)
-	joined_time_day = str(member.joined_at)[8:10]
-	joined_time_day = int(joined_time_day)
-	week = 0
-	
-	if now_time_day < joined_time_day:
-		now_time_month -= 1
-		now_time_day += day_bonus
-		day = now_time_day - joined_time_day
-	else:
-		day = now_time_day - joined_time_day
-	
-	if now_time_month < joined_time_month:
-		now_time_year -= 1
-		now_time_month += 12
-		month = now_time_month - joined_time_month
-	else:
-		month = now_time_month - joined_time_month
-	
-	while day // 7:
-		week += 1
-		day -= 7
-	
-	year = now_time_year - joined_time_year
-	
-	if year == 0:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					join_msg = 'Today'
-				elif day == 1:
-					join_msg = '1 day ago'
-				else:
-					join_msg = f'{str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = '1 week ago'
-				elif day == 1:
-					join_msg = '1 week and 1 day ago'
-				else:
-					join_msg = f'1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'{str(week)} weeks ago'
-				elif day == 1:
-					join_msg = f'{str(week)} weeks and 1 day ago'
-				else:
-					join_msg = f'{str(week)} weeks and ' + str(day) + ' days ago'
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					join_msg = '1 month ago'
-				elif day == 1:
-					join_msg = '1 month and 1 day ago'
-				else:
-					join_msg = f'1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = '1 month and 1 week ago'
-				elif day == 1:
-					join_msg = '1 month, 1 week and 1 day ago'
-				else:
-					join_msg = f'1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'1 month {str(week)} weeks ago'
-				elif day == 1:
-					join_msg = f'1 month, {str(week)} weeks and 1 day ago'
-				else:
-					join_msg = f'1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					join_msg = f'{str(month)} month ago'
-				elif day == 1:
-					join_msg = f'{str(month)} month and 1 day ago'
-				else:
-					join_msg = f'{str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = f'{month} month and 1 week ago'
-				elif day == 1:
-					join_msg = f'{month} month, 1 week and 1 day ago'
-				else:
-					join_msg = f'{month} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'{month} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					join_msg = f'{month} month and ' + str(week) + ' weeks and 1 day ago'
-				else:
-					join_msg = f'{month} month and ' + str(week) + f' weeks and {str(day)} days ago'
-					
-	elif year == 1:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					join_msg = '1 year ago'
-				elif day == 1:
-					join_msg = '1 year and 1 day ago'
-				else:
-					join_msg = f'1 year and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = '1 year and 1 week ago'
-				elif day == 1:
-					join_msg = '1 year, 1 week and 1 day ago'
-				else:
-					join_msg = f'1 year, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'1 year and {str(week)} weeks ago'
-				elif day == 1:
-					join_msg = f'1 year, {str(week)} weeks and 1 day ago'
-				else:
-					join_msg = f'1 year, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					join_msg = '1 year and 1 month ago'
-				elif day == 1:
-					join_msg = '1 year, 1 month and 1 day ago'
-				else:
-					join_msg = f'1 year, 1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = '1 year, 1 month and 1 week ago'
-				elif day == 1:
-					join_msg = '1 year, 1 month, 1 week and 1 day ago'
-				else:
-					join_msg = f'1 year, 1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'1 year, 1 month and {str(week)} weeks ago'
-				elif day == 1:
-					join_msg = f'1 year, 1 month, {str(week)} weeks and 1 day ago'
-				else:
-					join_msg = f'1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					join_msg = f'1 year and {str(month)} month ago'
-				elif day == 1:
-					join_msg = f'1 year, {str(month)} month and 1 day ago'
-				else:
-					join_msg = f'1 year, {str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = f'1 year, {str(month)} month and 1 week ago'
-				elif day == 1:
-					join_msg = f'1 year, {str(month)} month, 1 week and 1 day ago'
-				else:
-					join_msg = f'1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'1 year, {str(month)} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					join_msg = f'1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					join_msg = f'1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
-	else:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					join_msg = f'{str(year)} years ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = f'{str(year)} years and 1 week ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, 1 week and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'{str(year)} years and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					join_msg = f'{str(year)} years and 1 month ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, 1 month and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, 1 month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = f'{str(year)} years, 1 month and 1 week ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, 1 month, 1 week and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'{str(year)} years, 1 month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					join_msg = f'{str(year)} years and ' + str(month) + ' month ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, ' +  str(month) + ' month and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					join_msg = f'{str(year)} years, ' + str(month) + ' month and 1 week ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					join_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
-				elif day == 1:
-					join_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
-				else:
-					join_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'
-	
-	join_info = join_date + f' ({join_msg})'
-	
-	emb.add_field(name = "Joined server", value = join_info, inline = False)
-	
-	if str(member.created_at)[8:10] == '01':
-		create_day = str(member.created_at)[9:10] + 'st'
-	elif str(member.created_at)[8:10] == '02':
-		create_day = str(member.created_at)[9:10] + 'nd'
-	elif str(member.created_at)[8:10] == '03':
-		create_day = str(member.created_at)[9:10] + 'rd'
-	elif (str(member.created_at)[8:10] == '04' or str(member.created_at)[8:10] == '05' or str(member.created_at)[8:10] == '06'
-	      or str(member.created_at)[8:10] == '07' or str(member.created_at)[8:10] == '08' or str(member.created_at)[8:10] == '09'):
-		create_day = str(member.created_at)[9:10] + 'th'
-	elif str(member.created_at)[8:10] == '21' or str(member.created_at)[8:10] == '31':
-		create_day = str(member.created_at)[8:10] + 'st'
-	elif str(member.created_at)[8:10] == '22':
-		create_day = str(member.created_at)[8:10] + 'nd'
-	elif str(member.created_at)[8:10] == '23':
-		create_day = str(member.created_at)[8:10] + 'rd'
-	else:
-		create_day = str(member.created_at)[8:10] + 'th'
-		
-	if str(member.created_at)[5:7] == '01':
-		create_month = ' February '
-	elif str(member.created_at)[5:7] == '02':
-		create_month = ' January '
-	elif str(member.created_at)[5:7] == '03':
-		create_month = ' March '
-	elif str(member.created_at)[5:7] == '04':
-		create_month = ' April '
-	elif str(member.created_at)[5:7] == '05':
-		create_month = ' May '
-	elif str(member.created_at)[5:7] == '06':
-		create_month = ' June '
-	elif str(member.created_at)[5:7] == '07':
-		create_month = ' July '
-	elif str(member.created_at)[5:7] == '08':
-		create_month = ' August '
-	elif str(member.created_at)[5:7] == '09':
-		create_month = ' September '
-	elif str(member.created_at)[5:7] == '10':
-		create_month = ' October '
-	elif str(member.created_at)[5:7] == '11':
-		create_month = ' November '
-	elif str(member.created_at)[5:7] == '12':
-		create_month = ' December '
-		
-	create_date = create_day + create_month + str(member.created_at)[2:4]
-	
-	now_time_year = str(datetime.date.today())[0:4]
-	now_time_year = int(now_time_year)
-	created_time_year = str(member.created_at)[0:4]
-	created_time_year = int(created_time_year)
-	
-	now_time_month = str(datetime.date.today())[5:7]
-	now_time_month = int(now_time_month)
-	created_time_month = str(member.created_at)[5:7]
-	created_time_month = int(created_time_month)
-	
-	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
-	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
-		day_bonus = 31
-	elif now_time_month == 2:
-		day_bonus = 28
-	else:
-		day_bonus = 30
-	
-	now_time_day = str(datetime.date.today())[8:10]
-	now_time_day = int(now_time_day)
-	created_time_day = str(member.created_at)[8:10]
-	created_time_day = int(created_time_day)
-	week = 0
-	
-	if now_time_day < created_time_day:
-		now_time_month -= 1
-		now_time_day += day_bonus
-		day = now_time_day - created_time_day
-	else:
-		day = now_time_day - created_time_day
-	
-	if now_time_month < created_time_month:
-		now_time_year -= 1
-		now_time_month += 12
-		month = now_time_month - created_time_month
-	else:
-		month = now_time_month - created_time_month
-	
-	while day // 7:
-		week += 1
-		day -= 7
-	
-	year = now_time_year - created_time_year
-	
-	if year == 0:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					create_msg = 'Today'
-				elif day == 1:
-					create_msg = '1 day ago'
-				else:
-					create_msg = f'{str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = '1 week ago'
-				elif day == 1:
-					create_msg = '1 week and 1 day ago'
-				else:
-					create_msg = f'1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'{str(week)} weeks ago'
-				elif day == 1:
-					create_msg = f'{str(week)} weeks and 1 day ago'
-				else:
-					create_msg = f'{str(week)} weeks and ' + str(day) + ' days ago'
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					create_msg = '1 month ago'
-				elif day == 1:
-					create_msg = '1 month and 1 day ago'
-				else:
-					create_msg = f'1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = '1 month and 1 week ago'
-				elif day == 1:
-					create_msg = '1 month, 1 week and 1 day ago'
-				else:
-					create_msg = f'1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'1 month {str(week)} weeks ago'
-				elif day == 1:
-					create_msg = f'1 month, {str(week)} weeks and 1 day ago'
-				else:
-					create_msg = f'1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					create_msg = f'{str(month)} month ago'
-				elif day == 1:
-					create_msg = f'{str(month)} month and 1 day ago'
-				else:
-					create_msg = f'{str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = f'{month} month and 1 week ago'
-				elif day == 1:
-					create_msg = f'{month} month, 1 week and 1 day ago'
-				else:
-					create_msg = f'{month} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'{month} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					create_msg = f'{month} month and ' + str(week) + ' weeks and 1 day ago'
-				else:
-					create_msg = f'{month} month and ' + str(week) + f' weeks and {str(day)} days ago'
-					
-	elif year == 1:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					create_msg = '1 year ago'
-				elif day == 1:
-					create_msg = '1 year and 1 day ago'
-				else:
-					create_msg = f'1 year and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = '1 year and 1 week ago'
-				elif day == 1:
-					create_msg = '1 year, 1 week and 1 day ago'
-				else:
-					create_msg = f'1 year, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'1 year and {str(week)} weeks ago'
-				elif day == 1:
-					create_msg = f'1 year, {str(week)} weeks and 1 day ago'
-				else:
-					create_msg = f'1 year, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					create_msg = '1 year and 1 month ago'
-				elif day == 1:
-					create_msg = '1 year, 1 month and 1 day ago'
-				else:
-					create_msg = f'1 year, 1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = '1 year, 1 month and 1 week ago'
-				elif day == 1:
-					create_msg = '1 year, 1 month, 1 week and 1 day ago'
-				else:
-					create_msg = f'1 year, 1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'1 year, 1 month and {str(week)} weeks ago'
-				elif day == 1:
-					create_msg = f'1 year, 1 month, {str(week)} weeks and 1 day ago'
-				else:
-					create_msg = f'1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					create_msg = f'1 year and {str(month)} month ago'
-				elif day == 1:
-					create_msg = f'1 year, {str(month)} month and 1 day ago'
-				else:
-					create_msg = f'1 year, {str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = f'1 year, {str(month)} month and 1 week ago'
-				elif day == 1:
-					create_msg = f'1 year, {str(month)} month, 1 week and 1 day ago'
-				else:
-					create_msg = f'1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'1 year, {str(month)} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					create_msg = f'1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					create_msg = f'1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
-	else:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					create_msg = f'{str(year)} years ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = f'{str(year)} years and 1 week ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, 1 week and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'{str(year)} years and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					create_msg = f'{str(year)} years and 1 month ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, 1 month and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, 1 month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = f'{str(year)} years, 1 month and 1 week ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, 1 month, 1 week and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'{str(year)} years, 1 month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					create_msg = f'{str(year)} years and ' + str(month) + ' month ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, ' +  str(month) + ' month and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					create_msg = f'{str(year)} years, ' + str(month) + ' month and 1 week ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
-				elif day == 1:
-					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
-				else:
-					create_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'
-	
-	create_info = create_date + f' ({create_msg})'
-	
-	emb.add_field(name = "Created account", value = create_info, inline = False)
+	emb.add_field(name = "Joined server", value = calculator(member.joined_at), inline = False)
+	emb.add_field(name = "Created account", value = calculator(member.created_at), inline = False)
 	if member.top_role == member.roles[0]:
 		emb.add_field(name = "Highest role", value = member.top_role, inline = False)
 	else:
@@ -812,325 +492,7 @@ async def server(ctx):
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = f':grinning: {len(server.emojis)}')
-	
-	if str(server.created_at)[8:10] == '01':
-		server_day = str(server.created_at)[9:10] + 'st'
-	elif str(server.created_at)[8:10] == '02':
-		server_day = str(server.created_at)[9:10] + 'nd'
-	elif str(server.created_at)[8:10] == '03':
-		server_day = str(server.created_at)[9:10] + 'rd'
-	elif (str(server.created_at)[8:10] == '04' or str(server.created_at)[8:10] == '05' or str(server.created_at)[8:10] == '06'
-	      or str(server.created_at)[8:10] == '07' or str(server.created_at)[8:10] == '08' or str(server.created_at)[8:10] == '09'):
-		server_day = str(server.created_at)[9:10] + 'th'
-	elif str(server.created_at)[8:10] == '21' or str(server.created_at)[8:10] == '31':
-		server_day = str(server.created_at)[8:10] + 'st'
-	elif str(server.created_at)[8:10] == '22':
-		server_day = str(server.created_at)[8:10] + 'nd'
-	elif str(server.created_at)[8:10] == '23':
-		server_day = str(server.created_at)[8:10] + 'rd'
-	else:
-		server_day = str(server.created_at)[8:10] + 'th'
-		
-	if str(server.created_at)[5:7] == '01':
-		server_month = ' February '
-	elif str(server.created_at)[5:7] == '02':
-		server_month = ' January '
-	elif str(server.created_at)[5:7] == '03':
-		server_month = ' March '
-	elif str(server.created_at)[5:7] == '04':
-		server_month = ' April '
-	elif str(server.created_at)[5:7] == '05':
-		server_month = ' May '
-	elif str(server.created_at)[5:7] == '06':
-		server_month = ' June '
-	elif str(server.created_at)[5:7] == '07':
-		server_month = ' July '
-	elif str(server.created_at)[5:7] == '08':
-		server_month = ' August '
-	elif str(server.created_at)[5:7] == '09':
-		server_month = ' September '
-	elif str(server.created_at)[5:7] == '10':
-		server_month = ' October '
-	elif str(server.created_at)[5:7] == '11':
-		server_month = ' November '
-	elif str(server.created_at)[5:7] == '12':
-		server_month = ' December '
-		
-	server_date = server_day + server_month + str(server.created_at)[2:4]
-	
-	now_time_year = str(datetime.date.today())[0:4]
-	now_time_year = int(now_time_year)
-	server_time_year = str(server.created_at)[0:4]
-	server_time_year = int(server_time_year)
-	
-	now_time_month = str(datetime.date.today())[5:7]
-	now_time_month = int(now_time_month)
-	server_time_month = str(server.created_at)[5:7]
-	server_time_month = int(server_time_month)
-	
-	if (now_time_month == 1 or now_time_month == 3 or now_time_month == 5 or now_time_month == 7
-	    or now_time_month == 8 or now_time_month == 10 or now_time_month == 12):
-		day_bonus = 31
-	elif now_time_month == 2:
-		day_bonus = 28
-	else:
-		day_bonus = 30
-	
-	now_time_day = str(datetime.date.today())[8:10]
-	now_time_day = int(now_time_day)
-	server_time_day = str(server.created_at)[8:10]
-	server_time_day = int(server_time_day)
-	week = 0
-	
-	if now_time_day < server_time_day:
-		now_time_month -= 1
-		now_time_day += day_bonus
-		day = now_time_day - server_time_day
-	else:
-		day = now_time_day - server_time_day
-	
-	if now_time_month < server_time_month:
-		now_time_year -= 1
-		now_time_month += 12
-		month = now_time_month - server_time_month
-	else:
-		month = now_time_month - server_time_month
-	
-	while day // 7:
-		week += 1
-		day -= 7
-	
-	year = now_time_year - server_time_year
-	
-	if year == 0:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					server_msg = 'Today'
-				elif day == 1:
-					server_msg = '1 day ago'
-				else:
-					server_msg = f'{str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = '1 week ago'
-				elif day == 1:
-					server_msg = '1 week and 1 day ago'
-				else:
-					server_msg = f'1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'{str(week)} weeks ago'
-				elif day == 1:
-					server_msg = f'{str(week)} weeks and 1 day ago'
-				else:
-					server_msg = f'{str(week)} weeks and ' + str(day) + ' days ago'
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					server_msg = '1 month ago'
-				elif day == 1:
-					server_msg = '1 month and 1 day ago'
-				else:
-					server_msg = f'1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = '1 month and 1 week ago'
-				elif day == 1:
-					server_msg = '1 month, 1 week and 1 day ago'
-				else:
-					server_msg = f'1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'1 month {str(week)} weeks ago'
-				elif day == 1:
-					server_msg = f'1 month, {str(week)} weeks and 1 day ago'
-				else:
-					server_msg = f'1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					server_msg = f'{str(month)} month ago'
-				elif day == 1:
-					server_msg = f'{str(month)} month and 1 day ago'
-				else:
-					server_msg = f'{str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = f'{month} month and 1 week ago'
-				elif day == 1:
-					server_msg = f'{month} month, 1 week and 1 day ago'
-				else:
-					server_msg = f'{month} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'{month} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					server_msg = f'{month} month and ' + str(week) + ' weeks and 1 day ago'
-				else:
-					server_msg = f'{month} month and ' + str(week) + f' weeks and {str(day)} days ago'
-					
-	elif year == 1:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					server_msg = '1 year ago'
-				elif day == 1:
-					server_msg = '1 year and 1 day ago'
-				else:
-					server_msg = f'1 year and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = '1 year and 1 week ago'
-				elif day == 1:
-					server_msg = '1 year, 1 week and 1 day ago'
-				else:
-					server_msg = f'1 year, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'1 year and {str(week)} weeks ago'
-				elif day == 1:
-					server_msg = f'1 year, {str(week)} weeks and 1 day ago'
-				else:
-					server_msg = f'1 year, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					server_msg = '1 year and 1 month ago'
-				elif day == 1:
-					server_msg = '1 year, 1 month and 1 day ago'
-				else:
-					server_msg = f'1 year, 1 month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = '1 year, 1 month and 1 week ago'
-				elif day == 1:
-					server_msg = '1 year, 1 month, 1 week and 1 day ago'
-				else:
-					server_msg = f'1 year, 1 month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'1 year, 1 month and {str(week)} weeks ago'
-				elif day == 1:
-					server_msg = f'1 year, 1 month, {str(week)} weeks and 1 day ago'
-				else:
-					server_msg = f'1 year, 1 month, {str(week)} weeks and ' + str(day) + ' days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					server_msg = f'1 year and {str(month)} month ago'
-				elif day == 1:
-					server_msg = f'1 year, {str(month)} month and 1 day ago'
-				else:
-					server_msg = f'1 year, {str(month)} month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = f'1 year, {str(month)} month and 1 week ago'
-				elif day == 1:
-					server_msg = f'1 year, {str(month)} month, 1 week and 1 day ago'
-				else:
-					server_msg = f'1 year, {str(month)} month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'1 year, {str(month)} month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					server_msg = f'1 year, {str(month)} month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					server_msg = f'1 year, {str(month)} month, ' + str(week) + f' weeks and {str(day)} days ago'
-	else:
-		if month == 0:
-			if week == 0:
-				if day == 0:
-					server_msg = f'{str(year)} years ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = f'{str(year)} years and 1 week ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, 1 week and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'{str(year)} years and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		elif month == 1:
-			if week == 0:
-				if day == 0:
-					server_msg = f'{str(year)} years and 1 month ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, 1 month and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, 1 month and ' + str(day) + ' days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = f'{str(year)} years, 1 month and 1 week ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, 1 month, 1 week and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, 1 month, 1 week and ' + str(day) + ' days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'{str(year)} years, 1 month and ' + str(week) + ' weeks ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, 1 month, ' + str(week) + ' weeks and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, 1 month, ' + str(week) + f' weeks and {str(day)} days ago'
-					
-		else:
-			if week == 0:
-				if day == 0:
-					server_msg = f'{str(year)} years and ' + str(month) + ' month ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, ' +  str(month) + ' month and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(day)} days ago'
-					
-			elif week == 1:
-				if day == 0:
-					server_msg = f'{str(year)} years, ' + str(month) + ' month and 1 week ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, ' + str(month) + ' month, 1 week and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, ' + str(month) + f' month, 1 week and {str(day)} days ago'
-					
-			else:
-				if day == 0:
-					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks ago'
-				elif day == 1:
-					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and 1 day ago'
-				else:
-					server_msg = f'{str(year)} years, ' + str(month) + f' month and {str(week)} weeks and ' + str(day) + ' days ago'
-	
-	server_info = server_date + f' ({server_msg})'
-	
-	s_e.add_field(name = "Created at", value = server_info, inline = False)
+	s_e.add_field(name = "Created at", value = calculator(server.created_at), inline = False)
 	
 	if server.region == discord.VoiceRegion('amsterdam'):
 		s_e.add_field(name = "Voice Region", value = ":flag_nl: Nethelands")
