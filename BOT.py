@@ -687,7 +687,7 @@ async def channel(ctx, channel = None):
 				r_roles_quantity += 1
 				r_roles_msg += f'{role_list[i].name}, '
 				read_list.append(role_list[i])
-			elif i => 1 and role_list[i].permissions.read_messages == True:
+			elif i >= 1 and role_list[i].permissions.read_messages == True:
 				if channel.overwrites_for(role_list[i]).read_messages != False:
 					r_roles_quantity += 1
 					r_roles_msg += f'{role_list[i].mention}, '
@@ -716,7 +716,7 @@ async def channel(ctx, channel = None):
 				if i == 0:
 					w_roles_quantity += 1
 					w_roles_msg += f'{role_list[i].name}, '
-				elif i => 1 and role_list[i].permissions.send_messages == True:
+				elif i >= 1 and role_list[i].permissions.send_messages == True:
 					if channel.overwrites_for(role_list[i]).send_messages != False:
 						w_roles_quantity += 1
 						w_roles_msg += f'{role_list[i].mention}, '
@@ -743,7 +743,7 @@ async def channel(ctx, channel = None):
 				if i == 0:
 					h_roles_quantity += 1
 					h_roles_msg += f'{role_list[i].name}, '
-				elif i => 1 and role_list[i].permissions.send_messages == True:
+				elif i >= 1 and role_list[i].permissions.send_messages == True:
 					if channel.overwrites_for(role_list[i]).read_message_history != False:
 						h_roles_quantity += 1
 						h_roles_msg += f'{role_list[i].mention}, '
