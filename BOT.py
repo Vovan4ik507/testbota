@@ -9,7 +9,7 @@ Bot = commands.Bot(command_prefix = '-')
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
-	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.green())
+	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.from_rgb(255, 0, 0))
 	e_e.set_image(url = emoji.url)
 	e_e.add_field(name = 'Name', value = emoji.name)
 	e_e.add_field(name = 'ID', value = emoji.id)
@@ -24,9 +24,8 @@ async def ping(ctx):
 	t2 = time.perf_counter()
 	latency = round(Bot.latency *1000)
 	t = round((t2 - t1) * 1000)
-	green = discord.Color.green()
 	desc=f":heartbeat: **{latency}**ms \n :stopwatch: **{t}**ms"
-	em = discord.Embed(title = ":ping_pong: Pong", description = desc, color = green)
+	em = discord.Embed(title = ":ping_pong: Pong", description = desc, color = discord.Color.from_rgb(255, 0, 0))
 	em.set_footer(text = f"Requested by {ctx.author.name}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = em)
 	
@@ -121,7 +120,7 @@ async def avatar(ctx, member = None):
 			if member_stop == False:
 				if member != None:
 					await ctx.send('You wrote member index incorectly.')
-	a_e = discord.Embed(title = f'{member} avatar', color = discord.Color.green())
+	a_e = discord.Embed(title = f'{member} avatar', color = discord.Color.from_rgb(255, 0, 0))
 	a_e.set_image(url = member.avatar_url)
 	a_e.set_footer(text = f'Caused by: {ctx.author}', icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = a_e)
@@ -499,6 +498,82 @@ async def user(ctx, member = None):
 	await ctx.send(embed = emb)
 
 @Bot.command()
+async def role(ctx, role = None):
+	
+	guild = ctx.guild
+	role_list = guild.roles
+	role_stop = 0
+	
+	for i in range(0, len(role_list)):
+		if role == role_list[i].name or role == str(role_list[i].id) or role == role_list[i].mention:
+			role_stop = True
+			role = role_list[i]
+	else:
+		if role_stop == False:	
+			await ctx.send('You didn\'t write role index.')
+				
+	r_e = discord.Embed(title = 'Role information', color = role.color)
+	r_e.add_field(name = 'Name', value = role.name)
+	r_e.add_field(name = 'ID', value = role.id)
+	r_e.add_field(name = 'Mention', value = f'`{role.mention}`')
+	r_e.add_field(name = 'Color', value = role.color)
+	r_e.add_field(name = 'Members', value = len(role.members))
+	if role.is_default() == True:
+		r_e.add_field(name = 'Default', value = 'Yes')
+	else:
+		r_e.add_field(name = 'Default', value = 'No')
+	r_e.add_field(name = 'Position (from top)', value = f'{len(ctx.guild.roles) - role.position}/{len(ctx.guild.roles)}')
+	if role.hoist == True:
+		r_e.add_field(name = 'Hoisted', value = 'Yes')
+	else:
+		r_e.add_field(name = 'Hoisted', value = 'No')
+	if role.mentionable == True:
+		r_e.add_field(name = 'Mentionable', value = 'Yes')
+	else:
+		r_e.add_field(name = 'Mentionable', value = 'No')
+	r_e.add_field(name = 'Created at', value = calculator(role.created_at), inline = False)
+		
+	if role.permissions.administrator == True:
+		r_e.add_field(name = 'Key Permissions', value = 'Administrator (all permissions)', inline = False)
+	else:
+		permissions = ''
+		if role.permissions.kick_members == True:
+			permissions += 'Kick members, '
+		if role.permissions.ban_members == True:
+			permissions += 'Ban members, '
+		if role.permissions.manage_channels == True:
+			permissions += f'Manage channels, '
+		if role.permissions.manage_guild == True:
+			permissions += f'Manage server, '
+		if role.permissions.manage_messages == True:
+			permissions += f'Manage messages, '
+		if role.permissions.mention_everyone == True:
+			permissions += f'Mention everyone, '
+		if role.permissions.mute_members == True:
+			permissions += f'Mute members, '
+		if role.permissions.deafen_members == True:
+			permissions += f'Deafen members, '
+		if role.permissions.move_members == True:
+			permissions += f'Move members, '
+		if role.permissions.manage_nicknames == True:
+			permissions += f'Manage nicknames, '
+		if role.permissions.manage_roles == True:
+			permissions += f'Manage roles, '
+		if role.permissions.manage_webhooks == True:
+			permissions += f'Manage webhooks, '
+		if role.permissions.manage_emojis == True:
+			permissions += f'Manage emojis, '
+		if role.permissions.view_audit_log == True:
+			permissions += f'View audit log, '
+		if len(permissions) == 0:
+			r_e.add_field(name = 'Key Permissions', value = 'Don\'t have any key permission.', inline = False)
+		else:
+			permissions = permissions[0 : len(permissions) - 2]
+			r_e.add_field(name = 'Key Permissions', value = permissions, inline = False)
+		
+	await ctx.send(embed = r_e)
+
+@Bot.command()
 async def server(ctx):
 	server = ctx.guild
 	online_members = 0
@@ -506,7 +581,7 @@ async def server(ctx):
 	busy_members = 0
 	bot_members = 0
 	bans = await server.bans()
-	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.green())
+	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.from_rgb(255, 0, 0))
 	s_e.add_field(name = "Server ID", value = server.id)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
 	for i in range(0, len(server.members)):
@@ -600,27 +675,27 @@ async def channel(ctx, channel = None):
 			if role_list[i].permissions.read_messages == True:
 				if channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True:
 					r_roles_quantity += 1
-					r_roles_msg += role_list[i].mention
-					r_roles_msg += ', '
+					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 			else:
 				if channel.overwrites_for(role_list[i]).read_messages == True or role_list[i].permissions.administrator == True:
 					r_roles_quantity += 1
-					r_roles_msg += role_list[i].mention
-					r_roles_msg += ', '
+					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 		else:
-			if role_list[i].permissions.read_messages == True:
+			if i == 0:
+				r_roles_quantity += 1
+				r_roles_msg += f'{role_list[i].name}, '
+				read_list.append(role_list[i])
+			elif i => 1 and role_list[i].permissions.read_messages == True:
 				if channel.overwrites_for(role_list[i]).read_messages != False:
 					r_roles_quantity += 1
-					r_roles_msg += role_list[i].mention
-					r_roles_msg += ', '
+					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 			else:
 				if channel.overwrites_for(role_list[i]).read_messages == True:
 					r_roles_quantity += 1
-					r_roles_msg += role_list[i].mention
-					r_roles_msg += ', '
+					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 	else:
 		r_roles_msg = r_roles_msg[0: len(r_roles_msg) - 2]
@@ -632,24 +707,23 @@ async def channel(ctx, channel = None):
 					if (channel.overwrites_for(role_list[i]).send_messages == True or role_list[i].permissions.administrator == True
 					    or channel.overwrites_for(role_list[i]).send_messages == None):
 						w_roles_quantity += 1
-						w_roles_msg += role_list[i].mention
-						w_roles_msg += ', '
+						w_roles_msg += f'{role_list[i].mention}, '
 				else:
 					if channel.overwrites_for(role_list[i]).send_messages == True or role_list[i].permissions.administrator == True:
 						w_roles_quantity += 1
-						w_roles_msg += role_list[i].mention
-						w_roles_msg += ', '
+						w_roles_msg += f'{role_list[i].mention}, '
 			else:
-				if role_list[i].permissions.send_messages == True:
+				if i == 0:
+					w_roles_quantity += 1
+					w_roles_msg += f'{role_list[i].name}, '
+				elif i => 1 and role_list[i].permissions.send_messages == True:
 					if channel.overwrites_for(role_list[i]).send_messages != False:
 						w_roles_quantity += 1
-						w_roles_msg += role_list[i].mention
-						w_roles_msg += ', '
+						w_roles_msg += f'{role_list[i].mention}, '
 				else:
 					if channel.overwrites_for(role_list[i]).send_messages == True:
 						w_roles_quantity += 1
-						w_roles_msg += role_list[i].mention
-						w_roles_msg += ', '
+						w_roles_msg += f'{role_list[i].mention}, '
 	else:
 		w_roles_msg = w_roles_msg[0: len(w_roles_msg) - 2]
 		
@@ -660,24 +734,23 @@ async def channel(ctx, channel = None):
 					if (channel.overwrites_for(role_list[i]).read_message_history == True or role_list[i].permissions.administrator == True
 					    or channel.overwrites_for(role_list[i]).read_message_history == None):
 						h_roles_quantity += 1
-						h_roles_msg += role_list[i].mention
-						h_roles_msg += ', '
+						h_roles_msg += f'{role_list[i].mention}, '
 				else:
 					if channel.overwrites_for(role_list[i]).read_message_history == True or role_list[i].permissions.administrator == True:
 						h_roles_quantity += 1
-						h_roles_msg += role_list[i].mention
-						h_roles_msg += ', '
+						h_roles_msg += f'{role_list[i].mention}, '
 			else:
-				if role_list[i].permissions.send_messages == True:
+				if i == 0:
+					h_roles_quantity += 1
+					h_roles_msg += f'{role_list[i].name}, '
+				elif i => 1 and role_list[i].permissions.send_messages == True:
 					if channel.overwrites_for(role_list[i]).read_message_history != False:
 						h_roles_quantity += 1
-						h_roles_msg += role_list[i].mention
-						h_roles_msg += ', '
+						h_roles_msg += f'{role_list[i].mention}, '
 				else:
 					if channel.overwrites_for(role_list[i]).read_message_history == True:
 						h_roles_quantity += 1
-						h_roles_msg += role_list[i].mention
-						h_roles_msg += ', '
+						h_roles_msg += f'{role_list[i].mention}, '
 	else:
 		h_roles_msg = h_roles_msg[0: len(h_roles_msg) - 2]
 	
