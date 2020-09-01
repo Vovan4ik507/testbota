@@ -627,16 +627,16 @@ async def server(ctx):
 	for i in range(0, len(server.members)):
 		if server.members[i].bot == True:
 			bot_members += 1
-	statuses = (f'<:online:747352635643920385> {online_members} Online \n<:idle:747490969984958544> {inactive_members} Inactive'
-		   +f'\n<:dnd:747492056087134289> {busy_members} Busy \n<:offline:747355444250542141> {len(server.members) - bot_members} Offline')
+	statuses = (f'<:online:747352635643920385> **{online_members}** Online \n<:idle:747490969984958544> **{inactive_members}** Inactive'
+		   +f'\n<:dnd:747492056087134289> **{busy_members}** Busy \n<:offline:747355444250542141> **{len(server.members) - bot_members}** Offline')
 	s_e.add_field(name = "People statuses", value = statuses)
-	members = (f'All: **{len(server.members)}** \nPeople: **{len(server.members) - bot_members}** \nBots: **{bot_members}**')
+	members = (f'**{len(server.members)}** All \n**{len(server.members) - bot_members}** People \n**{bot_members}** Bots')
 	s_e.add_field(name = "Server members", value = members)
 	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
 	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = f':grinning: {len(server.emojis)}')
-	s_e.add_field(name = "Created at", value = calculator(server.created_at), inline = False)
+	s_e.add_field(name = "Bans", value = f'<:banhammer:747471683140452391> {len(bans)}')
 	
 	if server.region == discord.VoiceRegion('amsterdam'):
 		s_e.add_field(name = "Voice Region", value = ":flag_nl: Nethelands")
@@ -670,7 +670,7 @@ async def server(ctx):
 	      or server.region == discord.VoiceRegion('vip_us_east') or server.region == discord.VoiceRegion('us_south')
 	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west')):
 		s_e.add_field(name = "Voice Region", value = ":flag_us: USA")
-	s_e.add_field(name = "Bans", value = f'<:banhammer:747471683140452391> {len(bans)}')
+	s_e.add_field(name = "Created at", value = calculator(server.created_at), inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
 	await ctx.send(embed = s_e)
