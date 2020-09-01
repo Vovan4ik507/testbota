@@ -632,8 +632,8 @@ async def server(ctx):
 	s_e.add_field(name = "People statuses", value = statuses)
 	members = (f'**{len(server.members)}** All \n**{len(server.members) - bot_members}** People \n**{bot_members}** Bots')
 	s_e.add_field(name = "Server members", value = members)
-	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
-	s_e.add_field(name = "Channels", value = channels, inline = False)
+	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text \n<:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
+	s_e.add_field(name = "Channels", value = channels)
 	s_e.add_field(name = "Emojis", value = f':grinning: {len(server.emojis)}')
 	s_e.add_field(name = "Bans", value = f'<:banhammer:747471683140452391> {len(bans)}')
 	
