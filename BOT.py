@@ -630,7 +630,7 @@ async def server(ctx):
 	statuses = (f'<:online:747352635643920385> {online_members} Online \n<:idle:747490969984958544> {inactive_members} Inactive'
 		   +f'\n<:dnd:747492056087134289> {busy_members} Busy \n<:offline:747355444250542141> {len(server.members) - bot_members} Offline')
 	s_e.add_field(name = "People statuses", value = statuses)
-	members = (f'{len(server.members)} All \n{len(server.members) - bot_members} People \n{bot_members} Bots')
+	members = (f'All: **{len(server.members)}** \nPeople: **{len(server.members) - bot_members}** \nBots: **{bot_members}**')
 	s_e.add_field(name = "Server members", value = members)
 	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
