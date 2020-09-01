@@ -159,13 +159,13 @@ def calculator(num):
 	num = str(num)
 	
 	if num[8:10] == '01':
-		day = num[8:10] + 'st'
+		day = num[9:10] + 'st'
 	elif num[8:10] == '02':
-		day = num[8:10] + 'nd'
+		day = num[9:10] + 'nd'
 	elif num[8:10] == '03':
-		day = num[8:10] + 'rd'
+		day = num[9:10] + 'rd'
 	elif num[8:10] == '04' or num[8:10] == '05' or num[8:10] == '06' or num[8:10] == '07' or num[8:10] == '08' or num[8:10] == '09':
-		day = num[8:10] + 'th'
+		day = num[9:10] + 'th'
 	elif num[8:10] == '21' or num[8:10] == '31':
 		day = num[8:10] + 'st'
 	elif num[8:10] == '22':
@@ -783,7 +783,7 @@ async def channel(ctx, channel = None):
 	else:
 		h_roles_msg = h_roles_msg[0: len(h_roles_msg) - 2]
 	
-	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
+	c_e = discord.Embed(title = '<:textchannel:747403102650368032>Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
