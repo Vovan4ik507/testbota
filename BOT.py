@@ -634,7 +634,6 @@ async def server(ctx):
 	s_e.add_field(name = "Server members", value = members)
 	channels = f'<:textchannel:747403102650368032> {len(server.text_channels)} Text<:transparent:747360968773730325><:voicechannel:747410314630266960> {len(server.voice_channels)} Voice'
 	s_e.add_field(name = "Channels", value = channels, inline = False)
-	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Emojis", value = f':grinning: {len(server.emojis)}')
 	s_e.add_field(name = "Bans", value = f'<:banhammer:747471683140452391> {len(bans)}')
 	
@@ -670,6 +669,7 @@ async def server(ctx):
 	      or server.region == discord.VoiceRegion('vip_us_east') or server.region == discord.VoiceRegion('us_south')
 	      or server.region == discord.VoiceRegion('us_west') or server.region == discord.VoiceRegion('vip_us_west')):
 		s_e.add_field(name = "Voice Region", value = ":flag_us: USA")
+	s_e.add_field(name = "Roles", value = len(server.roles))
 	s_e.add_field(name = "Created at", value = calculator(server.created_at), inline = False)
 	s_e.set_thumbnail(url = server.icon_url)
 	s_e.set_footer(text = f"Caused by: {str(ctx.author)}", icon_url = ctx.author.avatar_url)
