@@ -504,7 +504,7 @@ async def user(ctx, member = None):
 			else:
 				await ctx.send('You wrote member index incorectly.')
 	
-	emb = discord.Embed(title = str(member), description = member.mention, color = member.top_role.color)
+	emb = discord.Embed(title = 'Member information', description = member.mention, color = member.top_role.color)
 	emb.add_field(name = "ID", value = member.id, inline = False)
 	emb.add_field(name = "Joined server", value = calculator(member.joined_at), inline = False)
 	emb.add_field(name = "Created account", value = calculator(member.created_at), inline = False)
@@ -610,8 +610,9 @@ async def server(ctx):
 	busy_members = 0
 	bot_members = 0
 	bans = await server.bans()
-	s_e = discord.Embed(title = server.name, description = server.description, color = discord.Color.from_rgb(255, 0, 0))
+	s_e = discord.Embed(title = 'Server information', description = server.description, color = discord.Color.from_rgb(255, 0, 0))
 	s_e.add_field(name = "Server ID", value = server.id)
+	s_e.add_field(name = "Name", value = server.name)
 	s_e.add_field(name = "Server Owner", value = server.owner.mention)
 	for i in range(0, len(server.members)):
 		if server.members[i].status == discord.Status.online or server.members[i].status == discord.Status.idle or server.members[i].status == discord.Status.dnd:
