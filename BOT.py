@@ -783,7 +783,7 @@ async def channel(ctx, channel = None):
 	else:
 		h_roles_msg = h_roles_msg[0: len(h_roles_msg) - 2]
 	
-	c_e = discord.Embed(title = '<:textchannel:747403102650368032>Channel information', color = discord.Color.from_rgb(255, 0, 0))
+	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
 	c_e.add_field(name = 'ID', value = channel.id)
 	c_e.add_field(name = 'Mention', value = f'`{channel.mention}`')
