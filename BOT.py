@@ -5,7 +5,7 @@ import os
 import datetime
 import time
 
-b_m = discord.Guild.me.mention
+b_m = commands.Bot.user.mention
 
 prefix = ['p!', b_m]
 
