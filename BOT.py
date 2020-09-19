@@ -5,7 +5,9 @@ import os
 import datetime
 import time
 
-prefix = ['p!']
+b_m = discord.Client.user.mention
+
+prefix = ['p!', b_m]
 
 Bot = commands.Bot(command_prefix = prefix)
 
