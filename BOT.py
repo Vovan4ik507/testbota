@@ -683,6 +683,7 @@ async def channel(ctx, channel = None):
 	r_roles_quantity = 0
 	r_roles_msg = ''
 	read_list = []
+	antiread_list = []
 	w_roles_quantity = 0
 	w_roles_msg = ''
 	h_roles_quantity = 0
@@ -716,22 +717,24 @@ async def channel(ctx, channel = None):
 					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 		else:
-			r_roles_msg += f'{role_list[i].name}, '
-			read_list.append(role_list[i])
+			r_roles_msg += f'{role_list[0].name}, '
+			read_list.append(role_list[0])
 			if channel.overwrites_for(role_list[i]).read_messages == False:
 				fake +=  1
 				r_roles_msg += f'{role_list[i].mention}, '
-				read_list.append(role_list[i])
+				antiread_list.append(role_list[i])
 				special = True
 			r_roles_quantity = len(role_list) - fake
 	else:
 		if special == True:
-			r_roles_msg = f'{r_roles_msg[0] - 2}  except {r_roles_msg[len(r_roles_msg[0]) : len(r_roles_msg) - 2]}'
+			r_roles_msg = f'{role_list[0]} except {r_roles_msg[10 : len(r_roles_msg) - 2]}'
 		else:
 			r_roles_msg = r_roles_msg[0: len(r_roles_msg) - 2]
+		special = False
+		fake = 0
 		
 	for i in range(0, len(role_list)):
-		if role_list[i] in read_list:
+		if role_list[i] in read_list and role_list[i] not in antiread_list:
 			if channel.overwrites_for(role_list[0]).send_messages == False:
 				if role_list[i].permissions.send_messages == True:
 					if (channel.overwrites_for(role_list[i]).send_messages == True or role_list[i].permissions.administrator == True
@@ -743,19 +746,19 @@ async def channel(ctx, channel = None):
 						w_roles_quantity += 1
 						w_roles_msg += f'{role_list[i].mention}, '
 			else:
-				if i == 0:
-					w_roles_quantity += 1
-					w_roles_msg += f'{role_list[i].name}, '
-				elif i >= 1 and role_list[i].permissions.send_messages == True:
-					if channel.overwrites_for(role_list[i]).send_messages != False:
-						w_roles_quantity += 1
-						w_roles_msg += f'{role_list[i].mention}, '
-				else:
-					if channel.overwrites_for(role_list[i]).send_messages == True:
-						w_roles_quantity += 1
-						w_roles_msg += f'{role_list[i].mention}, '
+				w_roles_msg += f'{role_list[0].name}, '
+				if channel.overwrites_for(role_list[i]).send_messages == False:
+					fake +=  1
+					w_roles_msg += f'{role_list[i].mention}, '
+					special = True
+				w_roles_quantity = len(role_list) - fake
 	else:
-		w_roles_msg = w_roles_msg[0: len(w_roles_msg) - 2]
+		if special == True:
+			w_roles_msg = f'{role_list[0]} except {w_roles_msg[10 : len(w_roles_msg) - 2]}'
+		else:
+			w_roles_msg = w_roles_msg[0: len(w_roles_msg) - 2]
+		special = False
+		fake = 0
 		
 	for i in range(0, len(role_list)):
 		if role_list[i] in read_list:
@@ -770,19 +773,19 @@ async def channel(ctx, channel = None):
 						h_roles_quantity += 1
 						h_roles_msg += f'{role_list[i].mention}, '
 			else:
-				if i == 0:
-					h_roles_quantity += 1
-					h_roles_msg += f'{role_list[i].name}, '
-				elif i >= 1 and role_list[i].permissions.send_messages == True:
-					if channel.overwrites_for(role_list[i]).read_message_history != False:
-						h_roles_quantity += 1
-						h_roles_msg += f'{role_list[i].mention}, '
-				else:
-					if channel.overwrites_for(role_list[i]).read_message_history == True:
-						h_roles_quantity += 1
-						h_roles_msg += f'{role_list[i].mention}, '
+				h_roles_msg += f'{role_list[0].name}, '
+				if channel.overwrites_for(role_list[i]).read_message_history == False:
+					fake +=  1
+					h_roles_msg += f'{role_list[i].mention}, '
+					special = True
+				h_roles_quantity = len(role_list) - fake
 	else:
-		h_roles_msg = h_roles_msg[0: len(h_roles_msg) - 2]
+		if special == True:
+			h_roles_msg = f'{role_list[0]} except {h_roles_msg[10 : len(h_roles_msg) - 2]}'
+		else:
+			w_roles_msg = w_roles_msg[0: len(w_roles_msg) - 2]
+		special = False
+		fake = 0
 	
 	c_e = discord.Embed(title = 'Channel information', color = discord.Color.from_rgb(255, 0, 0))
 	c_e.add_field(name = 'Name', value = channel.name)
