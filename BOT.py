@@ -689,9 +689,11 @@ async def channel(ctx, channel = None):
 	h_roles_msg = ''
 	channel_list = guild.text_channels
 	channel_stop = False
+	special = False
+	fake = 0
 	
 	for i in range(0, len(channel_list)):
-		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i].mention:
+		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
 			channel_stop = True
 			channel = channel_list[i]
 	else:
@@ -714,22 +716,19 @@ async def channel(ctx, channel = None):
 					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 		else:
-			if i == 0:
-				r_roles_quantity += 1
-				r_roles_msg += f'{role_list[i].name}, '
+			r_roles_msg += f'{role_list[i].name}, '
+			read_list.append(role_list[i])
+			if channel.overwrites_for(role_list[i]).read_messages == False:
+				fake +=  1
+				r_roles_msg += f'{role_list[i].mention}, '
 				read_list.append(role_list[i])
-			elif i >= 1 and role_list[i].permissions.read_messages == True:
-				if channel.overwrites_for(role_list[i]).read_messages != False:
-					r_roles_quantity += 1
-					r_roles_msg += f'{role_list[i].mention}, '
-					read_list.append(role_list[i])
-			else:
-				if channel.overwrites_for(role_list[i]).read_messages == True:
-					r_roles_quantity += 1
-					r_roles_msg += f'{role_list[i].mention}, '
-					read_list.append(role_list[i])
+				special = True
+			r_roles_quantity = len(role_list) - fake
 	else:
-		r_roles_msg = r_roles_msg[0: len(r_roles_msg) - 2]
+		if special == True:
+			r_roles_msg = f'{r_roles_msg[0] - 2}  except {r_roles_msg[len(r_roles_msg[0]) : len(r_roles_msg) - 2]}'
+		else:
+			r_roles_msg = r_roles_msg[0: len(r_roles_msg) - 2]
 		
 	for i in range(0, len(role_list)):
 		if role_list[i] in read_list:
