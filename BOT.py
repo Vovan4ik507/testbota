@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
-from discord.ext.commands import Utility
+from discord.ext import utility
 import os
 import datetime
 import time
