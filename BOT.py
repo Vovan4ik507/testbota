@@ -694,7 +694,7 @@ async def channel(ctx, channel = None):
 	fake = 0
 	
 	for i in range(0, len(channel_list)):
-		if channel == channel_list[i].name or channel == channel_list[i].id or channel == channel_list[i].mention:
+		if channel == channel_list[i].name or channel == str(channel_list[i].id) or channel == channel_list[i].mention:
 			channel_stop = True
 			channel = channel_list[i]
 	else:
