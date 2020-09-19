@@ -5,11 +5,11 @@ import os
 import datetime
 import time
 
-b_m = commands.Bot.user.mention
-
-prefix = ['p!', b_m]
+prefix = ['p!']
 
 Bot = commands.Bot(command_prefix = prefix)
+
+prefix.append(commands.Bot.user.mention)
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
