@@ -5,7 +5,9 @@ import os
 import datetime
 import time
 
-Bot = commands.Bot(command_prefix = 'p!')
+prefix = ['p!']
+
+Bot = commands.Bot(command_prefix = prefix)
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
