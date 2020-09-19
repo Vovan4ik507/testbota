@@ -10,9 +10,8 @@ prefix = ['p!']
 Bot = commands.Bot(command_prefix = prefix)
 
 client = discord.Client()
-b = discord.utils.get(client.guilds.members, guild__id = 646004417052540949, member__id = 513405344718782464)
-b_m = b.mention
-prefix.append(b_m)
+b = discord.utils.get(client.guilds, guild__id = 646004417052540949)
+prefix.append(b)
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
