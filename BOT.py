@@ -5,12 +5,14 @@ import os
 import datetime
 import time
 
-g = discord.utils.get(client.guilds, id = 646004417052540949)
-b = discord.utils.get(g.members, id = 513405344718782464)
-b_m = b.mention
-prefix = ['p!', b_m]
+prefix = ['p!']
 
 Bot = commands.Bot(command_prefix = prefix)
+
+g = discord.utils.get(Bot.guilds, id = 646004417052540949)
+b = discord.utils.get(g.members, id = 513405344718782464)
+b_m = b.mention
+prefix.append(b_m)
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
