@@ -749,7 +749,7 @@ async def channel(ctx, channel = None):
 					fake +=  1
 					w_roles_msg += f'{role_list[i].mention}, '
 					special = True
-				w_roles_quantity = len(role_list) - fake
+				w_roles_quantity = len(read_list) - fake
 	else:
 		if special == True:
 			w_roles_msg = f'{role_list[0]} except {w_roles_msg[0 : len(w_roles_msg) - 2]}'
@@ -775,7 +775,7 @@ async def channel(ctx, channel = None):
 					fake +=  1
 					h_roles_msg += f'{role_list[i].mention}, '
 					special = True
-				h_roles_quantity = len(role_list) - fake
+				h_roles_quantity = len(read_list) - fake
 	else:
 		if special == True:
 			h_roles_msg = f'{role_list[0]} except {h_roles_msg[0 : len(h_roles_msg) - 2]}'
