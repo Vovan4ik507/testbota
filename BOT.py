@@ -9,7 +9,7 @@ prefix = ['p!']
 
 Bot = commands.Bot(command_prefix = prefix)
 
-prefix.append(commands.Bot.user)
+prefix.append(str(commands.Bot.user).mention)
 
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
