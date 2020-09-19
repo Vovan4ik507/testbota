@@ -717,18 +717,15 @@ async def channel(ctx, channel = None):
 					r_roles_msg += f'{role_list[i].mention}, '
 					read_list.append(role_list[i])
 		else:
-			r_roles_msg += f'{role_list[0].name}, '
-			read_list.append(role_list[0])
 			if channel.overwrites_for(role_list[i]).read_messages == False:
 				fake +=  1
 				r_roles_msg += f'{role_list[i].mention} '
 				antiread_list.append(role_list[i])
 				special = True
-			else:
-				continue
 			r_roles_quantity = len(role_list) - fake
 	else:
 		if special == True:
+			read_list.append(role_list[0])
 			r_roles_msg = f'{role_list[0]} except {r_roles_msg[10 : len(r_roles_msg) - 2]}'
 		else:
 			r_roles_msg = r_roles_msg[0: len(r_roles_msg) - 2]
