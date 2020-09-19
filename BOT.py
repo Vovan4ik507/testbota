@@ -10,7 +10,7 @@ prefix = ['p!']
 Bot = commands.Bot(command_prefix = prefix)
 
 client = discord.Client()
-b = discord.utils.get(client.guilds, guild__id = 646004417052540949)
+b = str(discord.utils.get(client.guilds, guild__id = 646004417052540949))
 prefix.append(b)
 
 @Bot.command()
