@@ -722,6 +722,8 @@ async def channel(ctx, channel = None):
 				r_roles_msg += f'{role_list[i].mention}, '
 				antiread_list.append(role_list[i])
 				special = True
+			else:
+				read_list.append(role_list[i])
 			r_roles_quantity = len(role_list) - fake
 	else:
 		if special == True:
