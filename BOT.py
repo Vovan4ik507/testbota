@@ -10,10 +10,6 @@ prefix = ['p!']
 
 Bot = commands.Bot(command_prefix = prefix)
 
-client = discord.Client()
-b = discord.utils.get(client.guilds, guild__id = 646004417052540949)
-print(b)
-
 @Bot.command()
 async def emoji(ctx, emoji:discord.Emoji):
 	e_e = discord.Embed(title = f'`<:{emoji.name}:{emoji.id}>`', color = discord.Color.from_rgb(255, 0, 0))
